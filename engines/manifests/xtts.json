@@ -1,0 +1,20 @@
+{
+  "id": "xtts",
+  "name": "XTTS v2",
+  "module": "engines.xtts",
+  "class": "XTTSEngine",
+  "enabled": true,
+  "priority": 70,
+  "default_voice": "",
+  "language": "multi",
+  "dependencies": [
+    "TTS"
+  ],
+  "capabilities": {
+    "voice_cloning": true,
+    "multilingual": true,
+    "streaming": false,
+    "pitch_control": false,
+    "offline": true
+  }
+}

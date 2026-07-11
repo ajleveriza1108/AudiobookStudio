@@ -1,63 +1,55 @@
+from __future__ import annotations
+
 import os
 import sys
+import traceback
+from pathlib import Path
 
-# =========================================================
-# CUDA / TORCH SAFE INITIALIZATION
-# =========================================================
 
-os.environ["CUDA_MODULE_LOADING"] = "LAZY"
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
+# Configure CUDA before any package has a chance to import torch.
+os.environ.setdefault("CUDA_MODULE_LOADING", "LAZY")
+os.environ.setdefault(
+    "PYTORCH_CUDA_ALLOC_CONF",
+    "max_split_size_mb:128,expandable_segments:True",
+)
 
-import torch
+from core.paths import PATHS  # noqa: E402
 
-try:
-    if torch.cuda.is_available():
-        _ = torch.tensor([1], device="cuda")
-except Exception:
-    pass
+PATHS.ensure_runtime_directories()
+os.chdir(PATHS.project_root)
 
-# =========================================================
-# QT IMPORT
-# =========================================================
+from PySide6.QtCore import Qt  # noqa: E402
+from PySide6.QtWidgets import QApplication, QMessageBox  # noqa: E402
 
-from PySide6.QtWidgets import QApplication
-
-from ui.main_window import MainWindow
-
-from core.config import Config
-from core.library import Library
-from core.cache import CacheManager
-from core.logger import Logger
+from core.cache import CacheManager  # noqa: E402
+from core.config import Config  # noqa: E402
+from core.library import Library  # noqa: E402
+from core.logger import Logger  # noqa: E402
+from ui.main_window import MainWindow  # noqa: E402
 
 
 class AudiobookStudio:
-
-    def __init__(self):
-
-        # =========================
-        # CORE SYSTEMS
-        # =========================
-
+    def __init__(self) -> None:
         self.config = Config()
         self.library = Library()
-        self.cache = CacheManager("Cache")
-        self.logger = Logger()
+        self.cache = CacheManager(str(PATHS.cache))
+        self.logger = Logger(str(PATHS.logs))
 
-        # =========================
-        # QT APP
-        # =========================
+        try:
+            QApplication.setHighDpiScaleFactorRoundingPolicy(
+                Qt.HighDpiScaleFactorRoundingPolicy.PassThrough
+            )
+        except Exception:
+            pass
 
-        self.app = QApplication(sys.argv)
+        self.app = QApplication.instance() or QApplication(sys.argv)
         self.app.setApplicationName("Audiobook Studio")
         self.app.setOrganizationName("Audiobook Studio")
-
-        # =========================
-        # MAIN WINDOW
-        # =========================
+        self.app.aboutToQuit.connect(self.save_session)
 
         self.window = MainWindow()
-
         self.restore_session()
+        sys.excepthook = self.handle_unhandled_exception
 
     @property
     def settings(self):
@@ -75,104 +67,119 @@ class AudiobookStudio:
     def console(self):
         return self.window.central.console
 
-    def restore_session(self):
+    def _log_error(self, message: str) -> None:
+        try:
+            self.logger.error(message)
+        except Exception:
+            print(message, file=sys.stderr)
+
+    def handle_unhandled_exception(
+        self,
+        exception_type,
+        exception_value,
+        exception_traceback,
+    ) -> None:
+        details = "".join(
+            traceback.format_exception(
+                exception_type,
+                exception_value,
+                exception_traceback,
+            )
+        )
+        self._log_error(details)
 
         try:
-
-            self.window.resize(
-                self.config.get("window_width", 1850),
-                self.config.get("window_height", 1000),
+            QMessageBox.critical(
+                self.window,
+                "Audiobook Studio Error",
+                f"An unexpected error occurred:\n\n{exception_value}\n\n"
+                f"Details were written to:\n{PATHS.logs / 'audiobook.log'}",
             )
+        except Exception:
+            print(details, file=sys.stderr)
 
-            recent = self.config.recent_books()
+    def restore_session(self) -> None:
+        try:
+            width = max(900, int(self.config.get("window_width", 1536)))
+            height = max(650, int(self.config.get("window_height", 864)))
+            self.window.resize(width, height)
 
-            for book in recent:
+            if self.config.get("remember_last_book", True):
+                for book in self.config.recent_books():
+                    if Path(book).is_file():
+                        try:
+                            self.sidebar.add_book(book)
+                        except Exception:
+                            pass
 
-                try:
-                    self.sidebar.add_book(book)
-                except Exception:
-                    pass
-
-            last = self.config.get("last_book", "")
-
-            if last:
-
-                try:
-                    self.sidebar.add_book(last)
-                    self.preview.load_book(last)
-                except Exception:
-                    pass
-
-            self.settings.voice.setCurrentText(
-                self.config.get("voice", "af_heart")
-            )
-
-            self.settings.speed.setValue(
-                self.config.get("speed", 1.0)
-            )
-
-            self.settings.pitch.setValue(
-                self.config.get("pitch", 0)
-            )
-
-        except Exception as e:
+                last_book = str(self.config.get("last_book", "") or "")
+                if last_book and Path(last_book).is_file():
+                    try:
+                        self.sidebar.add_book(last_book)
+                        self.preview.load_book(last_book)
+                    except Exception:
+                        pass
 
             try:
-                self.logger.write(str(e))
-            except Exception:
-                print(e)
+                self.settings.voice.setCurrentText(
+                    str(self.config.get("voice", "af_heart"))
+                )
+                self.settings.speed.setValue(
+                    float(self.config.get("speed", 1.0))
+                )
+                self.settings.pitch.setValue(
+                    float(self.config.get("pitch", 0.0))
+                )
+            except Exception as error:
+                self._log_error(f"Could not restore generation settings: {error}")
 
-    def save_session(self):
+        except Exception as error:
+            self._log_error(f"Could not restore session: {error}")
 
-        self.config.set(
-            "window_width",
-            self.window.width(),
-        )
+    def save_session(self) -> None:
+        try:
+            current_book = self.sidebar.current_book()
+        except Exception:
+            current_book = ""
 
-        self.config.set(
-            "window_height",
-            self.window.height(),
-        )
+        values = {
+            "window_width": self.window.width(),
+            "window_height": self.window.height(),
+            "window_maximized": self.window.isMaximized(),
+        }
 
-        self.config.set(
-            "voice",
-            self.settings.current_voice(),
-        )
-
-        self.config.set(
-            "speed",
-            self.settings.current_speed(),
-        )
-
-        self.config.set(
-            "pitch",
-            self.settings.current_pitch(),
-        )
-
-        current = self.sidebar.current_book()
-
-        if current:
-            self.config.set(
-                "last_book",
-                current,
+        try:
+            values.update(
+                {
+                    "voice": self.settings.current_voice(),
+                    "speed": self.settings.current_speed(),
+                    "pitch": self.settings.current_pitch(),
+                }
             )
+        except Exception as error:
+            self._log_error(f"Could not read generation settings: {error}")
 
-    def run(self):
+        if current_book:
+            values["last_book"] = str(current_book)
 
-        self.window.show()
+        try:
+            self.config.update(values)
+        except Exception as error:
+            self._log_error(f"Could not save session: {error}")
 
-        code = self.app.exec()
+    def run(self) -> int:
+        if self.config.get("window_maximized", False):
+            self.window.showMaximized()
+        else:
+            self.window.show()
 
-        self.save_session()
-
-        sys.exit(code)
+        return int(self.app.exec())
 
 
-def main():
-
+def main() -> int:
     studio = AudiobookStudio()
-    studio.run()
+    return studio.run()
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

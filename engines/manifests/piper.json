@@ -1,0 +1,18 @@
+{
+  "id": "piper",
+  "name": "Piper",
+  "module": "engines.piper",
+  "class": "PiperEngine",
+  "enabled": true,
+  "priority": 60,
+  "default_voice": "",
+  "language": "multi",
+  "dependencies": [],
+  "capabilities": {
+    "voice_cloning": false,
+    "multilingual": true,
+    "streaming": false,
+    "pitch_control": false,
+    "offline": true
+  }
+}

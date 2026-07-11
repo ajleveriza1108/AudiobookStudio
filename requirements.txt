@@ -1,11 +1,21 @@
-fastapi==0.116.1
-uvicorn[standard]==0.35.0
-jinja2==3.1.6
-python-multipart==0.0.20
-aiofiles==24.1.0
+# Audiobook Studio - Python 3.12
+# Install PyTorch separately using the official selector for your CPU/CUDA setup.
 
-ebooklib==0.19
-pymupdf==1.26.4
-mutagen==1.47.0
+PySide6>=6.8,<7
+numpy>=1.26,<3
+soundfile>=0.12,<1
+librosa>=0.10.2,<1
+kokoro>=0.9.4,<1
 
-pydantic==2.11.7
+fastapi>=0.116,<1
+uvicorn[standard]>=0.35,<1
+jinja2>=3.1,<4
+python-multipart>=0.0.20,<1
+aiofiles>=24.1,<25
+
+ebooklib>=0.19,<1
+pymupdf>=1.26,<2
+mutagen>=1.47,<2
+pydantic>=2.11,<3
+
+pytest>=8,<10

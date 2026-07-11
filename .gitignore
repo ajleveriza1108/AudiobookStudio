@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local/private application state
+config.local.json
+library.local.json
+*.invalid
+*.tmp
+*.partial
+
+# Generated content
+Cache/
+Output/
+Projects/
+Logs/
+Temp/
+tmp/
+run/
+
+# Large local models
+Models/**/*.bin
+Models/**/*.pt
+Models/**/*.pth
+Models/**/*.ckpt
+Models/**/*.safetensors
+Models/**/*.onnx
+Models/**/*.gguf
+
+# Generated audio
+*.wav
+*.mp3
+*.m4b
+*.m4a
+*.flac
+*.ogg
+*.aac
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

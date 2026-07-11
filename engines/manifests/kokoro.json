@@ -1,0 +1,22 @@
+{
+  "id": "kokoro",
+  "name": "Kokoro 82M",
+  "module": "engines.kokoro",
+  "class": "KokoroEngine",
+  "enabled": true,
+  "priority": 100,
+  "default_voice": "af_heart",
+  "language": "en-us",
+  "dependencies": [
+    "kokoro",
+    "numpy",
+    "soundfile"
+  ],
+  "capabilities": {
+    "voice_cloning": false,
+    "multilingual": true,
+    "streaming": true,
+    "pitch_control": true,
+    "offline": true
+  }
+}
