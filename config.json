@@ -1,0 +1,19 @@
+{
+    "engine": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.25,
+    "pitch": 0,
+    "theme": "dark",
+    "output_folder": "Output",
+    "window_width": 1536,
+    "window_height": 793,
+    "remember_last_book": true,
+    "last_book": "C:\\Users\\Leveriza\\Documents\\Stalking the Wild Pendulum On the Mechanics of Consciousness.pdf",
+    "last_books": [],
+    "auto_merge": true,
+    "delete_chunks": false,
+    "export_wav": true,
+    "export_mp3": false,
+    "export_m4b": false,
+    "bitrate": "192k"
+}
