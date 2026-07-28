@@ -3,7 +3,7 @@
   "name": "Piper",
   "module": "engines.piper",
   "class": "PiperEngine",
-  "enabled": true,
+  "enabled": false,
   "priority": 60,
   "default_voice": "",
   "language": "multi",

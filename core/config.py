@@ -24,8 +24,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "cache_folder": "Cache",
     "model_folder": "Models",
     "logs_folder": "Logs",
-    "window_width": 1536,
-    "window_height": 864,
+    "window_width": 1366,
+    "window_height": 768,
     "window_maximized": False,
     "remember_last_book": True,
     "last_book": "",
@@ -39,6 +39,10 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "export_m4b": False,
     "bitrate": "192k",
     "sample_rate": 24000,
+    "panel_library_visible": True,
+    "panel_settings_visible": True,
+    "panel_activity_visible": True,
+    "focus_side_panel": "settings",
 }
 
 

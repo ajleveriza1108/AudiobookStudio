@@ -1,98 +1,81 @@
+from __future__ import annotations
+
 from engines.factory import EngineFactory
 
 
 class EngineService:
+    """Shared lazy-loaded engine service used by the GUI and workers."""
 
     _factory = EngineFactory()
-
     _engine = None
+    _engine_name: str | None = None
 
     @classmethod
-    def load(cls, engine_name="kokoro"):
+    def load(cls, engine_name: str = "kokoro"):
+        requested = str(engine_name or "kokoro").strip().lower()
 
-        if cls._engine is None:
-
-            cls._engine = cls._factory.load(
-
-                engine_name
-
-            )
+        if cls._engine is None or cls._engine_name != requested:
+            cls._engine = cls._factory.load(requested)
+            cls._engine_name = cls._factory.current_name() or requested
 
         return cls._engine
 
     @classmethod
-    def unload(cls):
-
+    def unload(cls) -> None:
+        cls._factory.unload()
         cls._engine = None
+        cls._engine_name = None
 
     @classmethod
     def current(cls):
-
         return cls._engine
 
     @classmethod
-    def loaded(cls):
+    def current_name(cls) -> str | None:
+        return cls._engine_name
 
+    @classmethod
+    def loaded(cls) -> bool:
         return cls._engine is not None
 
     @classmethod
-    def voices(cls):
+    def voices(cls, engine_name: str | None = None) -> list[str]:
+        if engine_name:
+            engine = cls.load(engine_name)
+            return list(engine.available_voices())
 
         if cls._engine is None:
-
             return []
 
-        return cls._engine.available_voices()
+        return list(cls._engine.available_voices())
 
     @classmethod
     def speak(
-
         cls,
-
         text,
-
         output,
-
         voice,
-
         speed,
-
-        pitch
-
+        pitch,
+        engine_name: str = "kokoro",
     ):
-
-        if cls._engine is None:
-
-            cls.load()
-
-        return cls._engine.speak(
-
+        engine = cls.load(engine_name)
+        return engine.speak(
             text=text,
-
             output_file=output,
-
             voice=voice,
-
             speed=speed,
-
-            pitch=pitch
-
+            pitch=pitch,
         )
 
     @classmethod
-    def backend(cls):
-
+    def backend(cls) -> str:
         if cls._engine is None:
-
             return "Not Loaded"
-
-        return cls._engine.backend()
+        return str(cls._engine.backend())
 
     @classmethod
-    def gpu(cls):
-
+    def gpu(cls) -> str:
         if cls._engine is None:
-
             return "Not Loaded"
-
-        return cls._engine.gpu_name()
+        return str(cls._engine.gpu_name())

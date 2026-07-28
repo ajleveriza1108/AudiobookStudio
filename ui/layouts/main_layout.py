@@ -1,39 +1,18 @@
+from __future__ import annotations
 
-from PySide6.QtWidgets import (
-    QWidget,
-    QHBoxLayout,
-    QSizePolicy,
-)
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QSplitter
 
 
-class MainLayout(QHBoxLayout):
-
+class MainLayout(QSplitter):
     def __init__(self, sidebar, preview, settings):
-
-        super().__init__()
-
-        self.setContentsMargins(0, 0, 0, 0)
-        self.setSpacing(10)
-
-        sidebar.setMinimumWidth(300)
-        sidebar.setMaximumWidth(300)
-        sidebar.setSizePolicy(
-            QSizePolicy.Fixed,
-            QSizePolicy.Expanding,
-        )
-
-        preview.setSizePolicy(
-            QSizePolicy.Expanding,
-            QSizePolicy.Expanding,
-        )
-
-        settings.setMinimumWidth(380)
-        settings.setMaximumWidth(380)
-        settings.setSizePolicy(
-            QSizePolicy.Fixed,
-            QSizePolicy.Expanding,
-        )
-
+        super().__init__(Qt.Orientation.Horizontal)
+        self.setChildrenCollapsible(True)
+        self.setHandleWidth(4)
         self.addWidget(sidebar)
-        self.addWidget(preview, 1)
+        self.addWidget(preview)
         self.addWidget(settings)
+        self.setStretchFactor(0, 0)
+        self.setStretchFactor(1, 1)
+        self.setStretchFactor(2, 0)
+        self.setSizes([220, 700, 320])

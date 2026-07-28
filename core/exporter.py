@@ -1,148 +1,48 @@
-from pathlib import Path
+from __future__ import annotations
+
+from datetime import datetime, timezone
 import json
-from datetime import datetime
+import os
+from pathlib import Path
+from typing import Any
 
 
 class Exporter:
+    @staticmethod
+    def _atomic_json(path: Path, data: Any) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = path.with_suffix(path.suffix + ".tmp")
+        with temporary.open("w", encoding="utf-8", newline="\n") as handle:
+            json.dump(data, handle, indent=2, ensure_ascii=False)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
 
-    def __init__(self):
+    def save_project(self, folder, metadata):
+        root = Path(folder)
+        data = dict(metadata)
+        data["saved"] = datetime.now(timezone.utc).isoformat()
+        self._atomic_json(root / "project.json", data)
 
-        pass
-
-    def save_project(
-
-        self,
-
-        folder,
-
-        metadata
-
-    ):
-
-        folder = Path(folder)
-
-        folder.mkdir(
-
-            parents=True,
-
-            exist_ok=True
-
-        )
-
-        metadata["saved"] = datetime.now().isoformat()
-
-        with open(
-
-            folder / "project.json",
-
-            "w",
-
-            encoding="utf-8"
-
-        ) as f:
-
-            json.dump(
-
-                metadata,
-
-                f,
-
-                indent=4,
-
-                ensure_ascii=False
-
-            )
-
-    def load_project(
-
-        self,
-
-        folder
-
-    ):
-
-        folder = Path(folder)
-
-        file = folder / "project.json"
-
-        if not file.exists():
-
+    def load_project(self, folder):
+        file = Path(folder) / "project.json"
+        if not file.is_file():
             return {}
+        try:
+            data = json.loads(file.read_text(encoding="utf-8-sig"))
+        except (OSError, json.JSONDecodeError, UnicodeError):
+            return {}
+        return data if isinstance(data, dict) else {}
 
-        with open(
+    def export_metadata(self, folder, metadata):
+        self._atomic_json(Path(folder) / "metadata.json", dict(metadata))
 
-            file,
+    def export_chapters(self, folder, chapters):
+        self._atomic_json(Path(folder) / "chapters.json", list(chapters))
 
-            encoding="utf-8"
+    def export_narration_plan(self, folder, plan):
+        self._atomic_json(Path(folder) / "narration_plan.json", list(plan))
 
-        ) as f:
-
-            return json.load(f)
-
-    def export_metadata(
-
-        self,
-
-        folder,
-
-        metadata
-
-    ):
-
-        folder = Path(folder)
-
-        with open(
-
-            folder / "metadata.json",
-
-            "w",
-
-            encoding="utf-8"
-
-        ) as f:
-
-            json.dump(
-
-                metadata,
-
-                f,
-
-                indent=4,
-
-                ensure_ascii=False
-
-            )
-
-    def export_chapters(
-
-        self,
-
-        folder,
-
-        chapters
-
-    ):
-
-        folder = Path(folder)
-
-        with open(
-
-            folder / "chapters.json",
-
-            "w",
-
-            encoding="utf-8"
-
-        ) as f:
-
-            json.dump(
-
-                chapters,
-
-                f,
-
-                indent=4,
-
-                ensure_ascii=False
-
-            )
+    def export_preparation_report(self, folder, report):
+        self._atomic_json(Path(folder) / "preparation_report.json", dict(report))

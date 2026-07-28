@@ -1,44 +1,18 @@
-from PySide6.QtWidgets import (
-    QWidget,
-    QSizePolicy,
-)
+from __future__ import annotations
+
+from PySide6.QtWidgets import QSizePolicy
 
 
 class ResponsiveLayout:
-
-    SIDEBAR_WIDTH = 300
-    SETTINGS_WIDTH = 380
-
     @staticmethod
     def apply(sidebar, preview, settings):
+        sidebar.setMinimumWidth(150)
+        sidebar.setMaximumWidth(360)
+        sidebar.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
 
-        sidebar.setMinimumWidth(
-            ResponsiveLayout.SIDEBAR_WIDTH
-        )
+        preview.setMinimumWidth(340)
+        preview.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
 
-        sidebar.setMaximumWidth(
-            ResponsiveLayout.SIDEBAR_WIDTH
-        )
-
-        sidebar.setSizePolicy(
-            QSizePolicy.Fixed,
-            QSizePolicy.Expanding,
-        )
-
-        preview.setSizePolicy(
-            QSizePolicy.Expanding,
-            QSizePolicy.Expanding,
-        )
-
-        settings.setMinimumWidth(
-            ResponsiveLayout.SETTINGS_WIDTH
-        )
-
-        settings.setMaximumWidth(
-            ResponsiveLayout.SETTINGS_WIDTH
-        )
-
-        settings.setSizePolicy(
-            QSizePolicy.Fixed,
-            QSizePolicy.Expanding,
-        )
+        settings.setMinimumWidth(260)
+        settings.setMaximumWidth(430)
+        settings.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)

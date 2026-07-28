@@ -1,78 +1,30 @@
-from ui.about_dialog import show_about
+from __future__ import annotations
 
 
 class MainWindowEvents:
-
     def __init__(self, window):
-
         self.window = window
 
     def connect(self):
+        central = self.window.central
+        footer = self.window.footer
+        generation = self.window.controller.generation
 
-        c = self.window.central
+        central.settings.book_selected.connect(self.window.controller.books.import_book)
+        central.settings.output_selected.connect(self.window.output_changed)
+        central.settings.generate_requested.connect(generation.generate)
+        central.settings.settings_changed.connect(self.window.save_generation_settings)
+        central.settings.engine_status_changed.connect(self.window.engine_status_changed)
 
-        f = self.window.footer
+        central.sidebar.book_selected.connect(self.window.controller.books.selected)
+        central.sidebar.book_cleared.connect(self.window.controller.books.cleared)
 
-        g = self.window.controller.generation
+        footer.pause.clicked.connect(generation.pause)
+        footer.resume.clicked.connect(generation.resume)
+        footer.stop.clicked.connect(generation.stop)
 
-        #
-        # Settings
-        #
-
-        c.settings.book_selected.connect(
-
-            self.window.controller.books.import_book
-
-        )
-
-        c.settings.output_selected.connect(
-
-            self.window.output_changed
-
-        )
-
-        c.settings.generate_requested.connect(
-
-            g.generate
-
-        )
-
-        #
-        # Sidebar
-        #
-
-        c.sidebar.book_selected.connect(
-
-            self.window.controller.books.selected
-
-        )
-
-        #
-        # Footer
-        #
-
-        f.pause.clicked.connect(
-
-            g.pause
-
-        )
-
-        f.resume.clicked.connect(
-
-            g.resume
-
-        )
-
-        f.stop.clicked.connect(
-
-            g.stop
-
-        )
-
-    def about(self):
-
-        show_about(
-
-            self.window
-
-        )
+        self.window.workspace.queue.started.connect(generation.generate_queue)
+        self.window.header.theme_changed.connect(self.window.theme_changed)
+        self.window.header.library_toggled.connect(self.window.responsive.set_library_visible)
+        self.window.header.settings_toggled.connect(self.window.responsive.set_settings_visible)
+        self.window.header.activity_toggled.connect(self.window.responsive.set_activity_visible)

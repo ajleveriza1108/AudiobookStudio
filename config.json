@@ -9,8 +9,8 @@
   "cache_folder": "Cache",
   "model_folder": "Models",
   "logs_folder": "Logs",
-  "window_width": 1536,
-  "window_height": 864,
+  "window_width": 1366,
+  "window_height": 768,
   "window_maximized": false,
   "remember_last_book": true,
   "last_book": "",
@@ -23,5 +23,9 @@
   "export_mp3": false,
   "export_m4b": false,
   "bitrate": "192k",
-  "sample_rate": 24000
+  "sample_rate": 24000,
+  "panel_library_visible": true,
+  "panel_settings_visible": true,
+  "panel_activity_visible": true,
+  "focus_side_panel": "settings"
 }

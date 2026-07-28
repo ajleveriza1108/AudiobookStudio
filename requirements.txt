@@ -1,11 +1,20 @@
-# Audiobook Studio - Python 3.12
-# Install PyTorch separately using the official selector for your CPU/CUDA setup.
+# Audiobook Studio v0.3.0 Alpha R1.10 - Windows CPU runtime
+#
+# IMPORTANT:
+#   PyTorch is installed separately by repair_runtime.ps1 from PyTorch's
+#   official CPU wheel index. Do not add an unpinned torch entry here.
+#   The project-local .venv is the only supported production runtime.
 
-PySide6>=6.8,<7
-numpy>=1.26,<3
+PySide6==6.8.3
+numpy==1.26.4
+psutil>=6.1,<8
 soundfile>=0.12,<1
 librosa>=0.10.2,<1
-kokoro>=0.9.4,<1
+kokoro==0.9.4
+misaki[en]==0.9.4
+transformers>=4.46,<5
+huggingface-hub>=0.26,<1
+requests>=2.32,<3
 
 fastapi>=0.116,<1
 uvicorn[standard]>=0.35,<1
@@ -14,8 +23,15 @@ python-multipart>=0.0.20,<1
 aiofiles>=24.1,<25
 
 ebooklib>=0.19,<1
+beautifulsoup4>=4.12,<5
 pymupdf>=1.26,<2
+
+# RapidOCR 3.9.2 supports ONNX Runtime 1.22+. Pinning the Windows CPU
+# runtime avoids unexpected native-DLL changes from future releases.
+rapidocr==3.9.2
+onnxruntime==1.22.1
 mutagen>=1.47,<2
+pydub>=0.25,<1
 pydantic>=2.11,<3
 
 pytest>=8,<10

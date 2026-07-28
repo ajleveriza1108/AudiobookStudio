@@ -1,10 +1,11 @@
-# Python
+﻿# Python
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .venv/
+.voice-venv/
 venv/
 
 # Local/private application state
@@ -15,6 +16,7 @@ library.local.json
 *.partial
 
 # Generated content
+Books/
 Cache/
 Output/
 Projects/
@@ -46,3 +48,45 @@ Models/**/*.gguf
 .idea/
 .DS_Store
 Thumbs.db
+
+# Upgrade backups and generated support bundles
+_backup_phase*/
+_backup_v*/
+*.zip
+
+# BEGIN AUDIOBOOK STUDIO LOCAL AND GENERATED FILES
+.venv/
+.voice-venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+Books/
+Cache/
+Logs/
+Models/
+Output/
+Projects/
+Temp/
+Voices/Cloned/
+config.local.json
+library.local.json
+voice_profiles.local.json
+startup_stage.json
+native_crash.log
+_backup_*/
+backup_*/
+.repair-backups/
+*.bak
+*.tmp
+*.zip
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+# END AUDIOBOOK STUDIO LOCAL AND GENERATED FILES
+

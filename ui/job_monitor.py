@@ -72,7 +72,7 @@ font-weight:bold;
 
         self.table.horizontalHeader().setSectionResizeMode(
 
-            QHeaderView.Stretch
+            QHeaderView.ResizeMode.Stretch
 
         )
 

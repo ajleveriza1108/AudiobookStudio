@@ -1,62 +1,27 @@
-from PySide6.QtCore import QObject
+class ButtonState:
+    """Tracks the minimum conditions required to start narration."""
 
-
-class ButtonState(QObject):
-
-    def __init__(
-
-        self,
-
-        generate,
-
-    ):
-
-        super().__init__()
-
+    def __init__(self, generate):
         self.generate = generate
+        self.book = False
+        self.output = False
+        self.engine = False
+        self.refresh()
 
-        self.book_selected = False
+    def set_book(self, value):
+        self.book = bool(value)
+        self.refresh()
 
-        self.output_selected = True
+    def set_output(self, value):
+        self.output = bool(value)
+        self.refresh()
 
-    def set_book(
+    def set_engine(self, value):
+        self.engine = bool(value)
+        self.refresh()
 
-        self,
+    def ready(self):
+        return bool(self.book and self.output and self.engine)
 
-        value,
-
-    ):
-
-        self.book_selected = value
-
-        self.update()
-
-    def set_output(
-
-        self,
-
-        value,
-
-    ):
-
-        self.output_selected = value
-
-        self.update()
-
-    def update(self):
-
-        enabled = (
-
-            self.book_selected
-
-            and
-
-            self.output_selected
-
-        )
-
-        self.generate.set_enabled(
-
-            enabled
-
-        )
+    def refresh(self):
+        self.generate.set_enabled(self.ready())

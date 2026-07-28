@@ -5,6 +5,7 @@ import importlib.util
 from pathlib import Path
 from typing import Any
 
+from core.optional_engines import chatterbox_runtime_ready
 from core.paths import PATHS
 from engines.manifest import EngineManifest
 
@@ -28,7 +29,7 @@ class EngineManager:
                     "module": "engines.kokoro",
                     "class": "KokoroEngine",
                     "default_voice": "af_heart",
-                    "dependencies": ["kokoro", "numpy", "soundfile"],
+                    "dependencies": ["kokoro", "torch", "numpy", "soundfile"],
                     "capabilities": {
                         "voice_cloning": False,
                         "multilingual": True,
@@ -43,6 +44,7 @@ class EngineManager:
                     "name": "Piper",
                     "module": "engines.piper",
                     "class": "PiperEngine",
+                    "enabled": False,
                     "dependencies": [],
                     "capabilities": {
                         "voice_cloning": False,
@@ -54,10 +56,29 @@ class EngineManager:
             ),
             EngineManifest.from_mapping(
                 {
+                    "id": "chatterbox",
+                    "name": "Chatterbox Voice Cloning",
+                    "module": "engines.chatterbox",
+                    "class": "ChatterboxEngine",
+                    "enabled": True,
+                    "priority": 80,
+                    "default_voice": "",
+                    "dependencies": [],
+                    "capabilities": {
+                        "voice_cloning": True,
+                        "multilingual": True,
+                        "streaming": False,
+                        "pitch_control": True,
+                    },
+                }
+            ),
+            EngineManifest.from_mapping(
+                {
                     "id": "xtts",
                     "name": "XTTS",
                     "module": "engines.xtts",
                     "class": "XTTSEngine",
+                    "enabled": False,
                     "dependencies": ["TTS"],
                     "capabilities": {
                         "voice_cloning": True,
@@ -111,6 +132,9 @@ class EngineManager:
 
     @staticmethod
     def _missing_dependencies(manifest: EngineManifest) -> list[str]:
+        if manifest.id == "chatterbox":
+            return [] if chatterbox_runtime_ready() else ["optional Chatterbox module"]
+
         missing: list[str] = []
 
         for dependency in manifest.dependencies:

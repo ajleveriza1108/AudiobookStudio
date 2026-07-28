@@ -8,7 +8,10 @@ from engines.manager import EngineManager
 
 def test_builtin_engines_are_registered(tmp_path: Path) -> None:
     manager = EngineManager(manifest_dir=tmp_path)
-    assert {"kokoro", "piper", "xtts"}.issubset(set(manager.names()))
+    assert {"kokoro", "piper", "xtts"}.issubset(set(manager.names(include_disabled=True)))
+    assert "kokoro" in manager.names()
+    assert "piper" not in manager.names()
+    assert "xtts" not in manager.names()
 
 
 def test_manifest_can_disable_engine(tmp_path: Path) -> None:

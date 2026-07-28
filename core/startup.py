@@ -1,33 +1,9 @@
-from pathlib import Path
+from __future__ import annotations
+
+from core.paths import PATHS
 
 
-FOLDERS = [
+def initialize() -> None:
+    """Create all portable runtime folders from the canonical path registry."""
 
-    "Books",
-
-    "Output",
-
-    "Logs",
-
-    "Models",
-
-    "Scripts",
-
-    "Temp",
-
-    "Voices",
-
-]
-
-
-def initialize():
-
-    for folder in FOLDERS:
-
-        Path(folder).mkdir(
-
-            parents=True,
-
-            exist_ok=True
-
-        )
+    PATHS.ensure_runtime_directories()

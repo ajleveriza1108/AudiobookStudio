@@ -1,0 +1,18 @@
+{
+  "id": "chatterbox",
+  "name": "Chatterbox Voice Cloning",
+  "module": "engines.chatterbox",
+  "class": "ChatterboxEngine",
+  "enabled": true,
+  "priority": 80,
+  "default_voice": "",
+  "language": "multi",
+  "dependencies": [],
+  "capabilities": {
+    "voice_cloning": true,
+    "multilingual": true,
+    "streaming": false,
+    "pitch_control": true,
+    "offline": true
+  }
+}

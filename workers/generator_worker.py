@@ -1,192 +1,149 @@
+from __future__ import annotations
+
 from pathlib import Path
 from threading import Event
 
 from PySide6.QtCore import QObject, Signal, Slot
 
-from core.project import AudiobookProject
 from core.batch import BatchProcessor
+from core.project import AudiobookProject
 
 
 class GeneratorWorker(QObject):
-
     progress = Signal(int)
     overall_progress = Signal(int)
-
     status = Signal(str)
     log = Signal(str)
-
+    statistics = Signal(dict)
     finished = Signal()
     cancelled = Signal()
     error = Signal(str)
-
     current_book = Signal(str)
 
     def __init__(self):
-
         super().__init__()
-
         self.batch = BatchProcessor()
-
         self.stop_event = Event()
         self.pause_event = Event()
         self.pause_event.set()
-
+        self.export_wav = True
         self.export_mp3 = False
         self.export_m4b = False
+        self.overwrite = False
         self.delete_chunks = False
+        self.bitrate = "192k"
 
-    def configure(self, export_mp3=False, export_m4b=False, delete_chunks=False):
+    def configure(
+        self,
+        export_wav=True,
+        export_mp3=False,
+        export_m4b=False,
+        overwrite=False,
+        delete_chunks=False,
+        bitrate="192k",
+    ):
+        self.export_wav = bool(export_wav)
+        self.export_mp3 = bool(export_mp3)
+        self.export_m4b = bool(export_m4b)
+        self.overwrite = bool(overwrite)
+        self.delete_chunks = bool(delete_chunks)
+        self.bitrate = str(bitrate or "192k")
 
-        self.export_mp3 = export_mp3
-        self.export_m4b = export_m4b
-        self.delete_chunks = delete_chunks
-
-    def add_job(self, source, output, voice, speed, pitch, engine="kokoro"):
-
+    def add_job(
+        self,
+        source,
+        output,
+        voice,
+        speed,
+        pitch,
+        engine="kokoro",
+        chapter_plan=None,
+        pronunciation_rules=None,
+        metadata_overrides=None,
+    ):
         self.batch.add(
             source=source,
             output=output,
             voice=voice,
             speed=speed,
             pitch=pitch,
-            engine=engine
+            engine=engine,
+            chapter_plan=chapter_plan,
+            pronunciation_rules=pronunciation_rules,
+            metadata_overrides=metadata_overrides,
         )
 
     def pause(self):
-
         self.pause_event.clear()
         self.status.emit("Paused")
 
     def resume(self):
-
         self.pause_event.set()
-        self.status.emit("Resumed")
+        self.status.emit("Resuming")
 
     def cancel(self):
-
         self.stop_event.set()
         self.pause_event.set()
 
-    def _get_total_books(self):
-
-        try:
-            return len(self.batch)
-        except Exception:
-            pass
-
-        if hasattr(self.batch, "jobs"):
-            return len(self.batch.jobs)
-
-        if hasattr(self.batch, "queue"):
-            return len(self.batch.queue)
-
-        if hasattr(self.batch, "_queue"):
-            return len(self.batch._queue)
-
-        return 0
-
     @Slot()
     def run(self):
-
         try:
-
-            self.log.emit("WORKER STARTED")
-
-            total_books = self._get_total_books()
-
-            self.log.emit(f"BATCH SIZE: {total_books}")
-
+            total_books = self.batch.pending()
             if total_books == 0:
-
-                self.log.emit("NO JOBS FOUND - EXITING WORKER")
-
                 self.finished.emit()
-
                 return
 
-            finished_books = 0
+            completed_books = 0
+            self.log.emit(f"Queue started with {total_books} book(s).")
 
             while not self.batch.empty():
-
                 if self.stop_event.is_set():
-
-                    self.log.emit("CANCELLED BY USER")
-
                     self.cancelled.emit()
-
                     return
 
                 job = self.batch.next()
-
                 if job is None:
-
-                    self.log.emit("JOB IS NONE - SKIPPING")
-
                     continue
 
                 source = Path(job.source)
-
                 self.current_book.emit(source.name)
-
                 self.log.emit("")
                 self.log.emit("=" * 60)
-                self.log.emit(f"BOOK {finished_books + 1}/{total_books}")
-                self.log.emit(source.name)
+                self.log.emit(f"BOOK {completed_books + 1}/{total_books}: {source.name}")
                 self.log.emit("=" * 60)
 
-                try:
+                project = AudiobookProject()
+                success = project.build(
+                    book=source,
+                    output_folder=job.output,
+                    voice=job.voice,
+                    speed=job.speed,
+                    pitch=job.pitch,
+                    engine=job.engine,
+                    chapter_plan=job.chapter_plan,
+                    pronunciation_rules=job.pronunciation_rules,
+                    metadata_overrides=job.metadata_overrides,
+                    export_wav=self.export_wav,
+                    export_mp3=self.export_mp3,
+                    export_m4b=self.export_m4b,
+                    overwrite=self.overwrite,
+                    delete_chunks=self.delete_chunks,
+                    bitrate=self.bitrate,
+                    progress_callback=self.progress.emit,
+                    status_callback=self.status.emit,
+                    log_callback=self.log.emit,
+                    statistics_callback=self.statistics.emit,
+                    cancel_callback=self.stop_event.is_set,
+                    pause_callback=self.pause_event,
+                )
 
-                    project = AudiobookProject()
-
-                    success = project.build(
-
-                        book=source,
-                        output_folder=job.output,
-                        voice=job.voice,
-                        speed=job.speed,
-                        pitch=job.pitch,
-
-                        export_mp3=self.export_mp3,
-                        export_m4b=self.export_m4b,
-                        delete_chunks=self.delete_chunks,
-
-                        progress_callback=self.progress.emit,
-                        status_callback=self.status.emit,
-                        log_callback=self.log.emit,
-                        cancel_callback=self.stop_event.is_set,
-                        pause_callback=self.pause_event
-                    )
-
-                    if not success:
-
-                        self.log.emit("PROJECT FAILED - STOPPING")
-
-                        self.error.emit("Generation failed")
-
-                        return
-
-                except Exception as e:
-
-                    self.log.emit(f"ERROR IN PROJECT: {e}")
-
-                    self.error.emit(str(e))
-
+                if not success:
+                    self.cancelled.emit()
                     return
 
-                finished_books += 1
-
-                percent = int((finished_books / total_books) * 100)
-
-                self.overall_progress.emit(percent)
-
-                self.log.emit("BOOK COMPLETED")
-
-            self.log.emit("ALL BOOKS DONE")
+                completed_books += 1
+                self.overall_progress.emit(int((completed_books / total_books) * 100))
 
             self.finished.emit()
-
-        except Exception as e:
-
-            self.log.emit(f"WORKER CRASH: {e}")
-
-            self.error.emit(str(e))
+        except Exception as error:
+            self.error.emit(str(error))

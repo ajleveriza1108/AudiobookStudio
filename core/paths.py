@@ -8,14 +8,21 @@ from pathlib import Path
 
 @dataclass(frozen=True)
 class AppPaths:
-    """All application paths resolved from one portable project root."""
+    """All application paths resolved from one portable project root.
+
+    Keep every runtime directory in this one object so the GUI, workers, and
+    command-line tools cannot drift into using different relative folders.
+    """
 
     project_root: Path
+    books: Path
     cache: Path
     output: Path
     projects: Path
     logs: Path
     models: Path
+    temp: Path
+    voices: Path
     config_defaults: Path
     config_local: Path
     library_legacy: Path
@@ -34,28 +41,28 @@ class AppPaths:
             origin = Path(start).expanduser().resolve() if start else Path(__file__).resolve()
             if origin.is_file():
                 origin = origin.parent
-
             project_root = cls._find_project_root(origin)
 
-        paths = cls(
+        return cls(
             project_root=project_root,
+            books=project_root / "Books",
             cache=project_root / "Cache",
             output=project_root / "Output",
             projects=project_root / "Projects",
             logs=project_root / "Logs",
             models=project_root / "Models",
+            temp=project_root / "Temp",
+            voices=project_root / "Voices",
             config_defaults=project_root / "config.json",
             config_local=project_root / "config.local.json",
             library_legacy=project_root / "library.json",
             library_local=project_root / "library.local.json",
             engine_manifests=project_root / "engines" / "manifests",
         )
-        return paths
 
     @staticmethod
     def _find_project_root(origin: Path) -> Path:
         candidates = [origin, *origin.parents]
-
         for candidate in candidates:
             if (
                 (candidate / "app.py").is_file()
@@ -69,11 +76,14 @@ class AppPaths:
 
     def ensure_runtime_directories(self) -> None:
         for folder in (
+            self.books,
             self.cache,
             self.output,
             self.projects,
             self.logs,
             self.models,
+            self.temp,
+            self.voices,
             self.engine_manifests,
         ):
             folder.mkdir(parents=True, exist_ok=True)
