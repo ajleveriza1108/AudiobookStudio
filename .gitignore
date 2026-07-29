@@ -62,3 +62,72 @@ _backup_v*/
 Selected Source.json
 
 selected_source_state_reconcile.json
+
+# Audiobook Studio repository hygiene
+
+# Python environments and caches
+.venv/
+.gpu-venv/
+.advanced-ocr-venv/
+.voice-venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local application data
+Books/
+Cache/
+Logs/
+Models/
+Output/
+Projects/
+Temp/
+tmp/
+Voices/
+build/
+dist/
+.repair-backups/
+_backup_*/
+backup_*/
+
+# Private state
+library.json
+library.local.json
+config.local.json
+voice_profiles.local.json
+Selected Source.json
+selected_source_state_reconcile.json
+.gpu-runtime-ready.json
+startup_stage.json
+native_crash.log
+
+# User books, audio, and downloaded models
+*.pdf
+*.epub
+*.wav
+*.mp3
+*.m4a
+*.m4b
+*.flac
+*.ogg
+*.aac
+*.onnx
+*.safetensors
+*.gguf
+*.ckpt
+*.pth
+*.pt
+*.zip
+
+# Temporary and operating-system files
+*.log
+*.tmp
+*.bak
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
