@@ -7,6 +7,7 @@ from core.parser import parse_book
 from core.pronunciation import PronunciationDictionary
 from ui.layouts.button_state import ButtonState
 from ui.pronunciation_manager import PronunciationManagerDialog
+from ui.settings_advanced_ocr import SettingsAdvancedOCR
 from ui.settings_book import SettingsBook
 from ui.settings_engine import SettingsEngine
 from ui.settings_export import SettingsExport
@@ -57,13 +58,14 @@ class SettingsPanel(QWidget):
         self.root.addWidget(self.title)
 
         self.engine = SettingsEngine(); self.speech = SettingsSpeech(); self.export = SettingsExport()
-        self.book = SettingsBook(); self.output = SettingsOutput()
+        self.book = SettingsBook(); self.output = SettingsOutput(); self.advanced_ocr = SettingsAdvancedOCR()
         self.tabs = QTabWidget()
         self.tabs.setDocumentMode(True)
         self.tabs.setUsesScrollButtons(True)
         self.tabs.setElideMode(Qt.TextElideMode.ElideRight)
         self.tabs.addTab(self._scroll_tab(self.book, self.output), "Book")
         self.tabs.addTab(self._scroll_tab(self.engine, self.speech), "Narrator")
+        self.tabs.addTab(self._scroll_tab(self.advanced_ocr), "OCR")
         self.tabs.addTab(self._scroll_tab(self.export), "Export")
         self.root.addWidget(self.tabs, 1)
         self.generate = SettingsGenerate(); self.root.addWidget(self.generate)
@@ -78,11 +80,13 @@ class SettingsPanel(QWidget):
         self.speech.preview_requested.connect(self.open_voice_preview)
         self.speech.voice_studio_requested.connect(self.open_voice_studio)
         self.engine.availability_changed.connect(self._engine_state_changed)
+        self.advanced_ocr.settings_changed.connect(self.settings_changed.emit)
 
         controls = [self.engine.engine, self.engine.profile, self.engine.voice, self.speech.speed, self.speech.pitch,
                     self.export.export_wav, self.export.export_mp3, self.export.export_m4b, self.export.overwrite,
                     self.export.delete_chunks, self.export.bitrate, self.export.title, self.export.author,
-                    self.export.narrator, self.export.genre, self.export.year, self.export.description]
+                    self.export.narrator, self.export.genre, self.export.year, self.export.description,
+                    self.advanced_ocr.enabled]
         for control in controls:
             signal = next((getattr(control, name, None) for name in ("currentIndexChanged","valueChanged","toggled","textChanged") if getattr(control, name, None) is not None), None)
             if signal is not None: signal.connect(lambda *_: self.settings_changed.emit())
@@ -118,6 +122,11 @@ class SettingsPanel(QWidget):
         self.book.button.setEnabled(not running); self.output.button.setEnabled(not running)
         self.speech.preview_button.setEnabled(not running and self.engine.is_available())
         self.speech.pronunciation_button.setEnabled(not running); self.speech.voice_studio_button.setEnabled(not running)
+        self.advanced_ocr.set_generation_running(running)
+    def open_advanced_ocr(self):
+        self.tabs.setCurrentIndex(2)
+        self.advanced_ocr.refresh()
+
     def open_pronunciation_manager(self):
         self._pronunciation_dialog=PronunciationManagerDialog(self); self._pronunciation_dialog.rules_changed.connect(self.settings_changed.emit); self._pronunciation_dialog.exec(); self._pronunciation_dialog=None
     def open_voice_preview(self):

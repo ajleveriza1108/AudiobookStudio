@@ -51,6 +51,7 @@ def test_profile_loader_matches_exact_content(tmp_path, monkeypatch):
             {
                 "schema": 1,
                 "id": "test-profile",
+                "automatic": True,
                 "match": {
                     "sha256": [digest],
                     "size_bytes": source.stat().st_size,

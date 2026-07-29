@@ -255,7 +255,11 @@ class AudiobookStudio:
                         self.sidebar.add_book(book)
 
                 last_book = str(self.config.get("last_book", "") or "")
-                if last_book and Path(last_book).is_file():
+                if (
+                    last_book
+                    and not self.config.is_book_removed(last_book)
+                    and Path(last_book).is_file()
+                ):
                     if self._previous_session_clean:
                         _write_startup_stage("restoring-last-book", last_book)
                         self.window.controller.books.selected(last_book)
@@ -301,8 +305,7 @@ class AudiobookStudio:
                 "delete_chunks": self.settings.delete_chunks.isChecked(),
                 "bitrate": self.settings.export.bitrate.currentText(),
             }
-            if current_book:
-                values["last_book"] = str(current_book)
+            values["last_book"] = str(current_book) if current_book else ""
             values.update(self.window.responsive.preferences())
             self.config.update(values)
         except Exception as error:

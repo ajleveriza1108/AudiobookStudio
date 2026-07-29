@@ -14,7 +14,10 @@ from typing import Any, Callable
 import fitz
 import numpy as np
 
-from core.ocr_corrections import find_correction_profile
+from core.advanced_ocr import AdvancedOCRCompatibility
+from core.config import Config
+from core.ocr_corrections import content_sha256, find_correction_profile
+from core.ocr_structured import structured_layout_requirement
 from core.ocr_layout import (
     OCRLayoutResult,
     OCRRegion,
@@ -23,6 +26,7 @@ from core.ocr_layout import (
     regions_from_tesseract_tsv,
 )
 from core.paths import PATHS
+from core.unlimited_ocr import UnlimitedOCRClient, UnlimitedOCRError
 
 
 class OCRUnavailableError(RuntimeError):
@@ -60,6 +64,8 @@ class OCRTextResult:
     low_confidence_pages: int = 0
     layout_schema: int = 0
     correction_profile: str = ""
+    advanced_pages: int = 0
+    fallback_pages: int = 0
 
 
 @dataclass(frozen=True)
@@ -107,13 +113,14 @@ class OCRService:
     MIN_EMBEDDED_CHARACTERS = 24
     MIN_RESULT_WORDS = 5
     DEFAULT_DPI = 220
-    CACHE_SCHEMA = 3
-    LAYOUT_SCHEMA = 2
+    CACHE_SCHEMA = 9
+    LAYOUT_SCHEMA = 8
     LOW_LAYOUT_CONFIDENCE = 0.68
     _rapid_engine: Any = None
+    _advanced_engine: UnlimitedOCRClient | None = None
 
     @classmethod
-    def availability(cls) -> OCRAvailability:
+    def base_availability(cls) -> OCRAvailability:
         if importlib.util.find_spec("rapidocr") and importlib.util.find_spec("onnxruntime"):
             return OCRAvailability(
                 True,
@@ -134,6 +141,27 @@ class OCRService:
             "Unavailable",
             "Offline OCR is not installed. Run install_dependencies.ps1.",
         )
+
+    @classmethod
+    def engine_preference(cls) -> str:
+        try:
+            if AdvancedOCRCompatibility.enabled_and_ready(Config()):
+                return "unlimited-ocr"
+        except Exception:
+            pass
+        return "standard"
+
+    @classmethod
+    def availability(cls) -> OCRAvailability:
+        fallback = cls.base_availability()
+        if cls.engine_preference() == "unlimited-ocr":
+            detail = "Unlimited-OCR is enabled. "
+            if fallback.available:
+                detail += f"{fallback.backend} remains the automatic fallback."
+            else:
+                detail += "No standard fallback engine is currently available."
+            return OCRAvailability(True, "Unlimited-OCR", detail)
+        return fallback
 
     @classmethod
     def is_available(cls) -> bool:
@@ -199,7 +227,73 @@ class OCRService:
             return None
         if int(manifest.get("layout_schema") or 0) != cls.LAYOUT_SCHEMA:
             return None
+        if str(manifest.get("engine_preference") or "standard") != cls.engine_preference():
+            return None
         return manifest
+
+    @classmethod
+    def _validate_cached_payload(
+        cls,
+        source: Path,
+        folder: Path,
+        manifest: dict[str, Any],
+        text: str,
+    ) -> tuple[bool, list[str]]:
+        """Reject incomplete, stale, or internally inconsistent OCR caches."""
+
+        reasons: list[str] = []
+        try:
+            with fitz.open(source) as document:
+                actual_pages = int(document.page_count)
+        except (OSError, RuntimeError, ValueError):
+            return False, ["The source PDF could not be reopened for cache validation."]
+
+        expected_source_hash = str(manifest.get("source_sha256") or "").casefold()
+        try:
+            actual_source_hash = content_sha256(source).casefold()
+        except OSError:
+            return False, ["The selected PDF could not be hashed for cache validation."]
+        if not expected_source_hash or expected_source_hash != actual_source_hash:
+            reasons.append(
+                "The OCR cache belongs to a different selected PDF fingerprint."
+            )
+
+        manifest_pages = int(manifest.get("pages") or 0)
+        source_pages = int(manifest.get("source_page_count") or 0)
+        text_pages = str(text or "").replace("\r", "").split("\f")
+        accounted_pages = int(manifest.get("ocr_pages") or 0) + int(
+            manifest.get("embedded_pages") or 0
+        )
+
+        if manifest.get("complete") is not True:
+            reasons.append("The OCR manifest is not marked complete.")
+        if manifest_pages != actual_pages:
+            reasons.append(
+                f"The OCR manifest contains {manifest_pages} pages, but the PDF contains {actual_pages}."
+            )
+        if source_pages != actual_pages:
+            reasons.append(
+                f"The OCR manifest source count is {source_pages}, expected {actual_pages}."
+            )
+        if len(text_pages) != actual_pages:
+            reasons.append(
+                f"The cached OCR text contains {len(text_pages)} page segments, expected {actual_pages}."
+            )
+        if accounted_pages != actual_pages:
+            reasons.append(
+                f"The OCR manifest accounts for {accounted_pages} pages, expected {actual_pages}."
+            )
+
+        expected_hash = str(manifest.get("text_sha256") or "").casefold()
+        actual_hash = hashlib.sha256(str(text or "").encode("utf-8")).hexdigest()
+        if not expected_hash or expected_hash != actual_hash:
+            reasons.append("The cached OCR text hash does not match its manifest.")
+
+        recorded_counts = manifest.get("page_word_counts")
+        if not isinstance(recorded_counts, list) or len(recorded_counts) != actual_pages:
+            reasons.append("The OCR manifest does not contain a complete per-page word-count record.")
+
+        return not reasons, reasons
 
     @classmethod
     def cached_text(cls, path: str | Path) -> OCRTextResult | None:
@@ -224,6 +318,34 @@ class OCRService:
         if len(text.split()) < cls.MIN_RESULT_WORDS:
             return None
 
+        valid, _reasons = cls._validate_cached_payload(source, folder, manifest, text)
+        if not valid:
+            # Leave the page files in place for diagnostics, but reject the full
+            # cache. A complete OCR pass will rebuild an atomic manifest.
+            return None
+
+        # Correction profiles can be added after a complete OCR cache already
+        # exists. Never let an older generic OCR result bypass a newer verified
+        # page-order/transcription profile. Reopen the source, resolve the
+        # currently applicable profile, and require the manifest to agree.
+        try:
+            with fitz.open(source) as document:
+                current_profile = find_correction_profile(
+                    source,
+                    page_count=int(document.page_count),
+                )
+        except (OSError, RuntimeError, ValueError):
+            return None
+
+        expected_profile = (
+            str(current_profile.profile_id).strip()
+            if current_profile is not None
+            else ""
+        )
+        cached_profile = str(manifest.get("correction_profile") or "").strip()
+        if cached_profile != expected_profile:
+            return None
+
         return OCRTextResult(
             text=text,
             backend=str(manifest.get("backend") or "Cached OCR"),
@@ -238,6 +360,8 @@ class OCRService:
             low_confidence_pages=int(manifest.get("low_confidence_pages") or 0),
             layout_schema=int(manifest.get("layout_schema") or 0),
             correction_profile=str(manifest.get("correction_profile") or ""),
+            advanced_pages=int(manifest.get("advanced_pages") or 0),
+            fallback_pages=int(manifest.get("fallback_pages") or 0),
         )
 
     @classmethod
@@ -262,6 +386,15 @@ class OCRService:
                 page_width=float(pixmap.width),
                 page_height=float(pixmap.height),
             )
+            requirement = structured_layout_requirement(
+                " ".join(region.text for region in regions)
+            )
+            if requirement is not None and layout.mode not in requirement[1]:
+                raise OCRProcessingError(
+                    "Structured OCR safety gate stopped a page that could not be "
+                    f"ordered as {requirement[0]}. Review the page image instead of "
+                    "narrating flattened OCR text."
+                )
             return OCRPageRecognition.from_layout(layout)
 
         # Compatibility fallback for adapters that expose text but not boxes.
@@ -333,12 +466,67 @@ class OCRService:
                 page_width=float(pixmap.width),
                 page_height=float(pixmap.height),
             )
+            requirement = structured_layout_requirement(
+                " ".join(region.text for region in regions)
+            )
+            if requirement is not None and layout.mode not in requirement[1]:
+                raise OCRProcessingError(
+                    "Structured OCR safety gate stopped a page that could not be "
+                    f"ordered as {requirement[0]}. Review the page image instead of "
+                    "narrating flattened OCR text."
+                )
             return OCRPageRecognition.from_layout(layout)
+
+    @classmethod
+    def _recognize_unlimited_ocr(cls, pixmap: fitz.Pixmap) -> OCRPageRecognition:
+        if cls._advanced_engine is None:
+            cls._advanced_engine = UnlimitedOCRClient()
+        result = cls._advanced_engine.recognize_pixmap(pixmap)
+        return OCRPageRecognition(
+            text=str(result.get("text") or "").strip(),
+            mode="advanced-layout",
+            confidence=0.86,
+            warnings=(
+                "Advanced semantic reading order was used; compare uncertain names and numbers with the page image.",
+            ),
+            details={
+                "advanced_engine": "Unlimited-OCR",
+                "device": str(result.get("device") or "CUDA"),
+                "model": str(result.get("model") or "baidu/Unlimited-OCR"),
+                "source_file": str(result.get("source_file") or ""),
+            },
+        )
 
     @classmethod
     def _recognize_page(
         cls, pixmap: fitz.Pixmap, backend: str, language: str
     ) -> OCRPageRecognition | str:
+        if backend == "Unlimited-OCR":
+            try:
+                return cls._recognize_unlimited_ocr(pixmap)
+            except (UnlimitedOCRError, RuntimeError, OSError) as error:
+                fallback = cls.base_availability()
+                if not fallback.available:
+                    raise OCRProcessingError(
+                        f"Advanced OCR failed and no fallback OCR is available: {error}"
+                    ) from error
+                if fallback.backend == "RapidOCR":
+                    result = cls._recognize_rapidocr(pixmap)
+                else:
+                    result = cls._recognize_tesseract(pixmap, language)
+                details = dict(result.details or {})
+                details["advanced_fallback"] = True
+                details["advanced_error"] = str(error)
+                return OCRPageRecognition(
+                    text=result.text,
+                    mode=result.mode,
+                    confidence=result.confidence,
+                    regions=result.regions,
+                    reading_order=result.reading_order,
+                    warnings=tuple(result.warnings)
+                    + ("Unlimited-OCR failed on this page; standard OCR fallback was used.",),
+                    details=details,
+                )
         if backend == "RapidOCR":
             return cls._recognize_rapidocr(pixmap)
         if backend == "Tesseract":
@@ -395,8 +583,10 @@ class OCRService:
         page_folder = folder / "pages"
         page_folder.mkdir(parents=True, exist_ok=True)
 
-        current_manifest = None if force else cls._read_manifest(folder)
-        allow_page_cache = current_manifest is not None
+        # A rejected full cache must never be reconstructed from an unverified
+        # subset of page files. Correctness is preferred over partial-cache speed.
+        current_manifest = None
+        allow_page_cache = False
 
         pages_text: list[str] = []
         page_layouts: list[dict[str, Any]] = []
@@ -406,6 +596,8 @@ class OCRService:
         timeline_pages = 0
         multi_column_pages = 0
         low_confidence_pages = 0
+        advanced_pages = 0
+        fallback_pages = 0
         matrix = fitz.Matrix(max(1, int(dpi)) / 72.0, max(1, int(dpi)) / 72.0)
 
         with fitz.open(source) as document:
@@ -504,6 +696,11 @@ class OCRService:
                     timeline_pages += 1
                 if mode == "multi-column":
                     multi_column_pages += 1
+                details = layout_record.get("details") or {}
+                if mode == "advanced-layout":
+                    advanced_pages += 1
+                if isinstance(details, dict) and details.get("advanced_fallback"):
+                    fallback_pages += 1
                 if mode != "embedded" and confidence < cls.LOW_LAYOUT_CONFIDENCE:
                     low_confidence_pages += 1
 
@@ -517,12 +714,30 @@ class OCRService:
                         suffix = f" • {mode} reading order"
                     log_callback(f"Page {page_number}/{total}: {stage}{suffix}")
 
+        if len(pages_text) != total or len(page_layouts) != total:
+            raise OCRProcessingError(
+                f"Offline OCR stopped before all pages were recorded: "
+                f"{len(pages_text)} of {total} pages."
+            )
+        if ocr_pages + embedded_count != total:
+            raise OCRProcessingError(
+                f"Offline OCR accounted for {ocr_pages + embedded_count} of {total} pages."
+            )
+
         text = "\n\f\n".join(pages_text).strip()
+        text_pages = text.replace("\r", "").split("\f")
+        if len(text_pages) != total:
+            raise OCRProcessingError(
+                f"Offline OCR produced {len(text_pages)} page segments for a {total}-page PDF."
+            )
         if len(text.split()) < cls.MIN_RESULT_WORDS:
             raise OCRProcessingError(
                 "Offline OCR finished but did not find enough readable words. "
                 "The scan may be too faint, decorative, rotated, or low resolution."
             )
+
+        page_word_counts = [len(page.split()) for page in text_pages]
+        text_sha256 = hashlib.sha256(text.encode("utf-8")).hexdigest()
 
         text_file = folder / "ocr_text.txt"
         manifest_file = folder / "manifest.json"
@@ -535,14 +750,23 @@ class OCRService:
             "schema": cls.CACHE_SCHEMA,
             "layout_schema": cls.LAYOUT_SCHEMA,
             "source": str(source),
+            "source_sha256": content_sha256(source),
             "backend": availability.backend,
+            "engine_preference": cls.engine_preference(),
+            "complete": True,
+            "source_page_count": total,
             "pages": len(pages_text),
+            "text_sha256": text_sha256,
+            "page_word_counts": page_word_counts,
+            "nonempty_pages": sum(1 for count in page_word_counts if count > 0),
             "ocr_pages": ocr_pages,
             "embedded_pages": embedded_count,
             "structured_pages": structured_pages,
             "timeline_pages": timeline_pages,
             "multi_column_pages": multi_column_pages,
             "low_confidence_pages": low_confidence_pages,
+            "advanced_pages": advanced_pages,
+            "fallback_pages": fallback_pages,
             "correction_profile": correction_profile.profile_id if correction_profile else "",
             "dpi": int(dpi),
         }
@@ -584,4 +808,6 @@ class OCRService:
             low_confidence_pages=low_confidence_pages,
             layout_schema=cls.LAYOUT_SCHEMA,
             correction_profile=correction_profile.profile_id if correction_profile else "",
+            advanced_pages=advanced_pages,
+            fallback_pages=fallback_pages,
         )

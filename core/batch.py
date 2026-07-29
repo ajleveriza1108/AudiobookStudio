@@ -27,12 +27,14 @@ class BatchProcessor:
         speed,
         pitch,
         engine,
+        source_sha256="",
         chapter_plan=None,
         pronunciation_rules=None,
         metadata_overrides=None,
     ):
         job = AudiobookJob(
             source=source,
+            source_sha256=source_sha256,
             output=output,
             voice=voice,
             speed=speed,

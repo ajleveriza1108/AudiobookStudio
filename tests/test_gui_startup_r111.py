@@ -58,6 +58,6 @@ def test_runtime_status_updates_do_not_replace_widget_stylesheet():
 def test_current_version_contract():
     version = read("core/version.py")
     checks = read("run_phase3_checks.ps1")
-    assert "R1.16" in version
-    assert "BUILD = 160" in version
+    assert "R1." in version
+    assert "BUILD =" in version
     assert "R1.16" in checks

@@ -144,6 +144,8 @@ def extract_book_text(
                 "low_confidence_pages": 0,
                 "layout_schema": 0,
                 "correction_profile": "",
+                "advanced_pages": 0,
+                "fallback_pages": 0,
                 "ocr_cache_folder": "",
             }
         )
@@ -168,6 +170,8 @@ def extract_book_text(
                         "low_confidence_pages": cached.low_confidence_pages,
                         "layout_schema": cached.layout_schema,
                         "correction_profile": cached.correction_profile,
+                        "advanced_pages": cached.advanced_pages,
+                        "fallback_pages": cached.fallback_pages,
                         "ocr_cache_folder": str(cached.cache_folder),
                     }
                 )
@@ -203,6 +207,8 @@ def extract_book_text(
                     "low_confidence_pages": result.low_confidence_pages,
                     "layout_schema": result.layout_schema,
                     "correction_profile": result.correction_profile,
+                    "advanced_pages": result.advanced_pages,
+                    "fallback_pages": result.fallback_pages,
                     "ocr_cache_folder": str(result.cache_folder),
                 }
             )
@@ -230,6 +236,8 @@ def extract_book_text(
                 "low_confidence_pages": 0,
                 "layout_schema": 0,
                 "correction_profile": "",
+                "advanced_pages": 0,
+                "fallback_pages": 0,
                 "ocr_cache_folder": "",
             }
         )

@@ -18,8 +18,9 @@ def test_launcher_uses_numeric_last_exit_code():
 
     assert "$Code = Invoke-StudioPython" not in script
     assert "$code = $LASTEXITCODE" in script
-    assert "& $VenvPython -u \"app.py\"" in script
+    assert ("& $RuntimePython -u \"app.py\"" in script or "& $VenvPython -u \"app.py\"" in script)
     assert ".venv\\Scripts\\python.exe" in script
+    assert ".gpu-venv\\Scripts\\python.exe" in script
 
 
 def test_no_function_assigns_console_output_to_exit_code():

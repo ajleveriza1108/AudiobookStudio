@@ -30,6 +30,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "remember_last_book": True,
     "last_book": "",
     "last_books": [],
+    "removed_books": [],
     "auto_merge": True,
     "resume_generation": True,
     "validate_chunks": True,
@@ -43,6 +44,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "panel_settings_visible": True,
     "panel_activity_visible": True,
     "focus_side_panel": "settings",
+    "processing_device": "auto",
+    "gpu_runtime_enabled": True,
+    "gpu_runtime_status": "not_installed",
+    "gpu_runtime_report": "",
+    "advanced_ocr_enabled": False,
+    "advanced_ocr_status": "not_checked",
+    "advanced_ocr_can_enable": False,
+    "advanced_ocr_last_checked_at": "",
+    "advanced_ocr_report": "",
 }
 
 
@@ -134,26 +144,93 @@ class Config:
             if save:
                 self.save()
 
+    @staticmethod
+    def _book_path(value: str | Path) -> str:
+        return str(Path(value).expanduser().resolve())
+
+    @classmethod
+    def _book_key(cls, value: str | Path) -> str:
+        return os.path.normcase(cls._book_path(value))
+
     def append_recent_book(self, book: str | Path) -> None:
-        book_path = str(Path(book).expanduser().resolve())
+        book_path = self._book_path(book)
+        book_key = self._book_key(book_path)
 
         with self._lock:
             books = [
-                str(item)
+                self._book_path(item)
                 for item in self.data.get("last_books", [])
                 if isinstance(item, (str, Path))
             ]
-            books = [item for item in books if item != book_path]
+            books = [item for item in books if self._book_key(item) != book_key]
             books.insert(0, book_path)
+
+            removed = [
+                self._book_path(item)
+                for item in self.data.get("removed_books", [])
+                if isinstance(item, (str, Path))
+            ]
+            removed = [item for item in removed if self._book_key(item) != book_key]
 
             self.data["last_books"] = books[:20]
             self.data["last_book"] = book_path
+            self.data["removed_books"] = removed[:200]
             self.save()
+
+    def remove_recent_book(self, book: str | Path) -> None:
+        book_path = self._book_path(book)
+        book_key = self._book_key(book_path)
+
+        with self._lock:
+            books = [
+                self._book_path(item)
+                for item in self.data.get("last_books", [])
+                if isinstance(item, (str, Path))
+            ]
+            books = [item for item in books if self._book_key(item) != book_key]
+
+            removed = [
+                self._book_path(item)
+                for item in self.data.get("removed_books", [])
+                if isinstance(item, (str, Path))
+            ]
+            if all(self._book_key(item) != book_key for item in removed):
+                removed.insert(0, book_path)
+
+            last_book = str(self.data.get("last_book", "") or "")
+            if last_book and self._book_key(last_book) == book_key:
+                last_book = ""
+
+            self.data["last_books"] = books[:20]
+            self.data["last_book"] = last_book
+            self.data["removed_books"] = removed[:200]
+            self.save()
+
+    def is_book_removed(self, book: str | Path) -> bool:
+        book_key = self._book_key(book)
+        with self._lock:
+            return any(
+                self._book_key(item) == book_key
+                for item in self.data.get("removed_books", [])
+                if isinstance(item, (str, Path))
+            )
 
     def recent_books(self) -> list[str]:
         with self._lock:
+            removed = {
+                self._book_key(item)
+                for item in self.data.get("removed_books", [])
+                if isinstance(item, (str, Path))
+            }
             values = self.data.get("last_books", [])
-            return [str(value) for value in values if isinstance(value, (str, Path))]
+            result: list[str] = []
+            for value in values:
+                if not isinstance(value, (str, Path)):
+                    continue
+                path = self._book_path(value)
+                if self._book_key(path) not in removed:
+                    result.append(path)
+            return result
 
     def as_dict(self) -> dict[str, Any]:
         with self._lock:

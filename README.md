@@ -18,16 +18,6 @@ Version 0.3.0 preserves the existing PySide6, Kokoro, project, queue, resume, an
 
 
 
-
-## R1.16 compact interface and optional Voice Studio
-
-- Adds Wide, Compact, and Focus layouts. On smaller windows, Library and Settings switch one at a time instead of squeezing or cropping the main book workspace.
-- Adds panel buttons and shortcuts: `Ctrl+L` for Library, `Ctrl+,` for Settings, and `Ctrl+J` for Activity.
-- Makes paths single-line and selectable with full tooltips, wraps crowded action rows into compact grids, and places advanced export metadata in collapsible sections.
-- Adds **Voice Studio** for local voice profiles created from recordings the user owns or is authorized to use. No celebrity recordings are included.
-- Adds an optional isolated Chatterbox runtime under `.voice-venv`; the verified Kokoro/OCR `.venv` remains untouched.
-- Supports Nano and Turbo for English, plus the larger Multilingual V3 model for supported languages.
-
 ## R1.15 verified narration and OCR accuracy repair
 
 - Audited the complete generated WAV against all 10 scanned pages of the supplied *Remember When 1945* booklet.
@@ -134,7 +124,7 @@ Or run the PowerShell launcher:
 .\run_phase3_checks.ps1
 ```
 
-The full checks validate dependencies, core imports, responsive GUI construction, scanned-PDF OCR, engine manifests, runtime folders, and FFmpeg availability. They do not install the optional Chatterbox module or generate a full book.
+The full checks validate dependencies, core imports, the responsive GUI, 38 core regression tests plus a real scanned-PDF OCR smoke test, engine manifests, runtime folders, and FFmpeg availability. They do not download the Kokoro model or generate a full book.
 
 ## Important use note
 
@@ -142,7 +132,7 @@ Convert only books and documents that you own or have permission to reproduce as
 
 ## Engine availability
 
-Kokoro remains the default supported production engine. Chatterbox is an optional, separately installed local voice-cloning engine for authorized reference recordings. Piper and XTTS extension points remain disabled until their incomplete implementations receive full packaging and regression-test support.
+Kokoro is the supported production engine in v0.3.0. Piper and XTTS extension points remain in the project but are disabled until their incomplete implementations receive full voice, generation, packaging, and regression-test support.
 
 ## R1.14 structured scanned-page support
 
@@ -151,4 +141,26 @@ Scanned PDFs are processed with coordinate-aware OCR. Timeline and calendar page
 ## R1.14.1 installer reliability
 
 The staged update gate now runs ordinary tests offscreen and runs the Qt worker-dispatch stress test on the real Windows renderer. Native child failures are reported with their exact signed and hexadecimal status instead of an unexplained `-1`.
+## R1.17 optional Advanced Layout OCR
+
+Audiobook Studio can optionally use `baidu/Unlimited-OCR` for difficult scanned
+pages such as timelines, tables, magazines, and multi-column layouts. The OCR
+tab contains a hardware-gated toggle. Turning it on checks and records Windows,
+CPU cores, RAM, free storage, NVIDIA GPU, VRAM, driver, CUDA level, and GPU
+compute capability before enabling the option.
+
+The module uses a separate `.advanced-ocr-venv` and a verified model under
+`Models/Unlimited-OCR`; the standard Kokoro/RapidOCR runtime is not modified.
+Unsupported laptops remain on RapidOCR. Experimental laptops require an
+explicit warning confirmation. During processing, invalid, repetitive, or empty
+Advanced OCR results are rejected and the standard OCR engine is used for that
+page.
+
+Capability report: `Logs/advanced_ocr_capability.json`
+
+Optional installer:
+
+```powershell
+.\install_advanced_ocr.ps1
+```
 

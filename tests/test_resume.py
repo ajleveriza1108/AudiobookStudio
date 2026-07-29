@@ -87,3 +87,22 @@ def test_resume_fingerprint_changes_when_engine_runtime_changes(tmp_path):
     manager.mark_completed(1, 1, "Hello.", first, wav)
     assert manager.is_current(1, "Hello.", first, wav)
     assert not manager.is_current(1, "Hello.", second, wav)
+
+
+def test_r1173_invalidates_pre_repair_chunk_manifests(tmp_path):
+    import json
+
+    old_manifest = {
+        "schema": 2,
+        "chunks": {
+            "1": {"hash": "old-regressed-audio", "file": "chunk_00001.wav"}
+        },
+    }
+    (tmp_path / ResumeManager.MANIFEST_NAME).write_text(
+        json.dumps(old_manifest), encoding="utf-8"
+    )
+    manager = ResumeManager(tmp_path)
+    loaded = manager.load_manifest()
+    assert ResumeManager.SCHEMA_VERSION == 3
+    assert loaded["schema"] == 3
+    assert loaded["chunks"] == {}

@@ -16,7 +16,7 @@ class ResumeManager:
 
     FILE_NAME = "progress.json"
     MANIFEST_NAME = "chunk_manifest.json"
-    SCHEMA_VERSION = 2
+    SCHEMA_VERSION = 3
 
     def __init__(self, output_folder: str | Path | None = None):
         self.output = Path(output_folder or ".")

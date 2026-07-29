@@ -1,0 +1,3374 @@
+{
+  "pages": [
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "19 A NOSTALGIC LOOK BACK IN TIME ys J msolns & LINCOLN we cn Sy 10GAS \u2014 Ss TV! INNER a | li a\u00a5 i y Sa 4 y LE i q ) CB v ie io JA IKE",
+      "reading_order": [
+        1,
+        3,
+        5,
+        6,
+        9,
+        7,
+        8,
+        14,
+        10,
+        13,
+        17,
+        25,
+        20,
+        21,
+        23,
+        19,
+        24,
+        32,
+        28,
+        38,
+        45,
+        47,
+        46,
+        48,
+        50
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "19",
+          "left": 498.0,
+          "top": 120.0,
+          "right": 731.0,
+          "bottom": 262.0,
+          "confidence": 0.95549355,
+          "source_index": 1
+        },
+        {
+          "text": "A NOSTALGIC LOOK BACK IN TIME",
+          "left": 222.0,
+          "top": 677.0,
+          "right": 1272.0,
+          "bottom": 781.0,
+          "confidence": 0.9564106633333335,
+          "source_index": 3
+        },
+        {
+          "text": "ys",
+          "left": 220.0,
+          "top": 952.0,
+          "right": 243.0,
+          "bottom": 967.0,
+          "confidence": 0.62445312,
+          "source_index": 5
+        },
+        {
+          "text": "J",
+          "left": 1166.0,
+          "top": 960.0,
+          "right": 1176.0,
+          "bottom": 977.0,
+          "confidence": 0.86301125,
+          "source_index": 6
+        },
+        {
+          "text": "& LINCOLN",
+          "left": 236.0,
+          "top": 1040.0,
+          "right": 339.0,
+          "bottom": 1060.0,
+          "confidence": 0.9491642,
+          "source_index": 7
+        },
+        {
+          "text": "we cn",
+          "left": 862.0,
+          "top": 1052.0,
+          "right": 899.0,
+          "bottom": 1080.0,
+          "confidence": 0.67591606,
+          "source_index": 8
+        },
+        {
+          "text": "msolns",
+          "left": 884.0,
+          "top": 1031.0,
+          "right": 960.0,
+          "bottom": 1054.0,
+          "confidence": 0.31601493999999997,
+          "source_index": 9
+        },
+        {
+          "text": "10GAS",
+          "left": 228.0,
+          "top": 1067.0,
+          "right": 285.0,
+          "bottom": 1085.0,
+          "confidence": 0.81937523,
+          "source_index": 10
+        },
+        {
+          "text": "\u2014 Ss",
+          "left": 862.0,
+          "top": 1119.0,
+          "right": 910.0,
+          "bottom": 1147.0,
+          "confidence": 0.44377399500000003,
+          "source_index": 13
+        },
+        {
+          "text": "Sy",
+          "left": 331.0,
+          "top": 1063.0,
+          "right": 466.0,
+          "bottom": 1187.0,
+          "confidence": 0.42536957000000003,
+          "source_index": 14
+        },
+        {
+          "text": "|",
+          "left": 68.0,
+          "top": 1198.0,
+          "right": 81.0,
+          "bottom": 1227.0,
+          "confidence": 0.7339082299999999,
+          "source_index": 16
+        },
+        {
+          "text": "TV! INNER",
+          "left": 724.0,
+          "top": 1188.0,
+          "right": 954.0,
+          "bottom": 1262.0,
+          "confidence": 0.62585861,
+          "source_index": 17
+        },
+        {
+          "text": "Sa",
+          "left": 109.0,
+          "top": 1280.0,
+          "right": 237.0,
+          "bottom": 1314.0,
+          "confidence": 0.42791996,
+          "source_index": 19
+        },
+        {
+          "text": "| li",
+          "left": 364.0,
+          "top": 1259.0,
+          "right": 425.0,
+          "bottom": 1289.0,
+          "confidence": 0.62994379,
+          "source_index": 20
+        },
+        {
+          "text": "a\u00a5",
+          "left": 980.0,
+          "top": 1271.0,
+          "right": 1006.0,
+          "bottom": 1294.0,
+          "confidence": 0.42103873999999997,
+          "source_index": 21
+        },
+        {
+          "text": "i y",
+          "left": 237.0,
+          "top": 1275.0,
+          "right": 363.0,
+          "bottom": 1344.0,
+          "confidence": 0.303377515,
+          "source_index": 23
+        },
+        {
+          "text": "4",
+          "left": 991.0,
+          "top": 1310.0,
+          "right": 1019.0,
+          "bottom": 1376.0,
+          "confidence": 0.77151794,
+          "source_index": 24
+        },
+        {
+          "text": "a",
+          "left": 1135.0,
+          "top": 1238.0,
+          "right": 1375.0,
+          "bottom": 1367.0,
+          "confidence": 0.43966988,
+          "source_index": 25
+        },
+        {
+          "text": "|",
+          "left": 48.0,
+          "top": 1371.0,
+          "right": 61.0,
+          "bottom": 1403.0,
+          "confidence": 0.6435510999999999,
+          "source_index": 26
+        },
+        {
+          "text": "i",
+          "left": 531.0,
+          "top": 1387.0,
+          "right": 542.0,
+          "bottom": 1419.0,
+          "confidence": 0.31584877,
+          "source_index": 28
+        },
+        {
+          "text": "y LE",
+          "left": 1077.0,
+          "top": 1369.0,
+          "right": 1249.0,
+          "bottom": 1446.0,
+          "confidence": 0.5383033349999999,
+          "source_index": 32
+        },
+        {
+          "text": "|",
+          "left": 49.0,
+          "top": 1431.0,
+          "right": 63.0,
+          "bottom": 1540.0,
+          "confidence": 0.61433949,
+          "source_index": 34
+        },
+        {
+          "text": "\u2014\u2014",
+          "left": 568.0,
+          "top": 1539.0,
+          "right": 674.0,
+          "bottom": 1549.0,
+          "confidence": 0.53118172,
+          "source_index": 35
+        },
+        {
+          "text": "q )",
+          "left": 1315.0,
+          "top": 1560.0,
+          "right": 1348.0,
+          "bottom": 1596.0,
+          "confidence": 0.48753970999999996,
+          "source_index": 38
+        },
+        {
+          "text": "CB",
+          "left": 983.0,
+          "top": 1786.0,
+          "right": 1054.0,
+          "bottom": 1830.0,
+          "confidence": 0.80156464,
+          "source_index": 45
+        },
+        {
+          "text": "ie",
+          "left": 274.0,
+          "top": 1829.0,
+          "right": 336.0,
+          "bottom": 1871.0,
+          "confidence": 0.60704403,
+          "source_index": 46
+        },
+        {
+          "text": "v",
+          "left": 284.0,
+          "top": 1794.0,
+          "right": 309.0,
+          "bottom": 1840.0,
+          "confidence": 0.39822544,
+          "source_index": 47
+        },
+        {
+          "text": "io JA",
+          "left": 1002.0,
+          "top": 1842.0,
+          "right": 1092.0,
+          "bottom": 1879.0,
+          "confidence": 0.45799808500000005,
+          "source_index": 48
+        },
+        {
+          "text": "IKE",
+          "left": 801.0,
+          "top": 1892.0,
+          "right": 848.0,
+          "bottom": 1910.0,
+          "confidence": 0.96051537,
+          "source_index": 50
+        }
+      ],
+      "page": 1
+    },
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "1945 Dock To From: Dan~ Date: & ] ly The richness of life tres the memories we have forgotten.",
+      "reading_order": [
+        0,
+        2,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "1945",
+          "left": 623.0,
+          "top": 301.0,
+          "right": 913.0,
+          "bottom": 404.0,
+          "confidence": 0.95995537,
+          "source_index": 0
+        },
+        {
+          "text": "To",
+          "left": 275.0,
+          "top": 715.0,
+          "right": 336.0,
+          "bottom": 754.0,
+          "confidence": 0.96215889,
+          "source_index": 1
+        },
+        {
+          "text": "Dock",
+          "left": 465.0,
+          "top": 694.0,
+          "right": 596.0,
+          "bottom": 757.0,
+          "confidence": 0.58536911,
+          "source_index": 2
+        },
+        {
+          "text": "From: Dan~",
+          "left": 278.0,
+          "top": 854.0,
+          "right": 633.0,
+          "bottom": 911.0,
+          "confidence": 0.89574318,
+          "source_index": 3
+        },
+        {
+          "text": "Date: & ] ly",
+          "left": 278.0,
+          "top": 998.0,
+          "right": 804.0,
+          "bottom": 1064.0,
+          "confidence": 0.705512525,
+          "source_index": 4
+        },
+        {
+          "text": "The richness of life",
+          "left": 475.0,
+          "top": 1358.0,
+          "right": 1112.0,
+          "bottom": 1462.0,
+          "confidence": 0.92299608,
+          "source_index": 5
+        },
+        {
+          "text": "tres the memories",
+          "left": 458.0,
+          "top": 1476.0,
+          "right": 1121.0,
+          "bottom": 1544.0,
+          "confidence": 0.5517561866666667,
+          "source_index": 6
+        },
+        {
+          "text": "we have forgotten.",
+          "left": 490.0,
+          "top": 1588.0,
+          "right": 1082.0,
+          "bottom": 1695.0,
+          "confidence": 0.91062195,
+          "source_index": 7
+        }
+      ],
+      "page": 2
+    },
+    {
+      "mode": "timeline",
+      "confidence": 0.99,
+      "text": "January: Pepe LePew debuts in the Warner Bros cartoon Odor-able Kitty.\n\nFebruary: Walt Disney\u2019s The 3 Caballeros opens in New York.\n\nMarch: Phyllis M. Daley is the first black nurse sworn-in as a U.S. Navy ensign.\n\nApril: The NFL requires players to wear long stockings.\n\nMay: a ec at Se Arthur C. Clarke proposes relay satellites in geosynchronous orbit.\n\nJune: The Charter of the United Nations is signed.\n\nJuly: A U.S. Army bomber crashes into the 79th floor of the Empire State Building.\n\nAugust: je In Washington, the 35 mph speed limit ends.\n\nSeptember: The U.S. regains possession of Wake Island from Japan.\n\nOctober: Jackie Robinson is chosen to integrate baseball and signs with the Montreal Royals, the top Dodgers farm team. SeekPublishing\n\nNovember: The first issue of Ebony magazine is published by John H. Johnson. Remember When\n\nDecember: The microwave oven is patented. 1945",
+      "reading_order": [
+        0,
+        4,
+        7,
+        10,
+        1,
+        5,
+        8,
+        11,
+        2,
+        6,
+        9,
+        12,
+        13,
+        14,
+        18,
+        21,
+        24,
+        15,
+        17,
+        19,
+        22,
+        25,
+        16,
+        20,
+        23,
+        26,
+        27,
+        31,
+        34,
+        37,
+        39,
+        28,
+        30,
+        32,
+        35,
+        29,
+        33,
+        36,
+        38,
+        40,
+        44,
+        47,
+        50,
+        52,
+        53,
+        54,
+        41,
+        45,
+        48,
+        51,
+        55,
+        42,
+        46,
+        49,
+        56
+      ],
+      "warnings": [],
+      "details": {
+        "anchors": {
+          "January": {
+            "text": "January",
+            "left": 299.0,
+            "top": 370.0,
+            "right": 446.0,
+            "bottom": 413.0,
+            "confidence": 0.9620494100000001,
+            "source_index": 0
+          },
+          "February": {
+            "text": "February",
+            "left": 695.0,
+            "top": 369.0,
+            "right": 863.0,
+            "bottom": 413.0,
+            "confidence": 0.96528694,
+            "source_index": 1
+          },
+          "March": {
+            "text": "March",
+            "left": 1124.0,
+            "top": 369.0,
+            "right": 1243.0,
+            "bottom": 402.0,
+            "confidence": 0.9672757,
+            "source_index": 2
+          },
+          "April": {
+            "text": "April",
+            "left": 323.0,
+            "top": 763.0,
+            "right": 420.0,
+            "bottom": 806.0,
+            "confidence": 0.96473663,
+            "source_index": 14
+          },
+          "May": {
+            "text": "May",
+            "left": 730.0,
+            "top": 764.0,
+            "right": 811.0,
+            "bottom": 806.0,
+            "confidence": 0.96558586,
+            "source_index": 15
+          },
+          "June": {
+            "text": "June",
+            "left": 1136.0,
+            "top": 764.0,
+            "right": 1219.0,
+            "bottom": 803.0,
+            "confidence": 0.96718048,
+            "source_index": 16
+          },
+          "July": {
+            "text": "July",
+            "left": 328.0,
+            "top": 1138.0,
+            "right": 403.0,
+            "bottom": 1182.0,
+            "confidence": 0.96956169,
+            "source_index": 27
+          },
+          "August": {
+            "text": "August",
+            "left": 702.0,
+            "top": 1140.0,
+            "right": 835.0,
+            "bottom": 1182.0,
+            "confidence": 0.9684072899999999,
+            "source_index": 28
+          },
+          "September": {
+            "text": "September",
+            "left": 1081.0,
+            "top": 1139.0,
+            "right": 1273.0,
+            "bottom": 1182.0,
+            "confidence": 0.96726257,
+            "source_index": 29
+          },
+          "October": {
+            "text": "October",
+            "left": 291.0,
+            "top": 1516.0,
+            "right": 429.0,
+            "bottom": 1549.0,
+            "confidence": 0.9669522899999999,
+            "source_index": 40
+          },
+          "November": {
+            "text": "November",
+            "left": 677.0,
+            "top": 1516.0,
+            "right": 861.0,
+            "bottom": 1549.0,
+            "confidence": 0.9655831899999999,
+            "source_index": 41
+          },
+          "December": {
+            "text": "December",
+            "left": 1093.0,
+            "top": 1516.0,
+            "right": 1266.0,
+            "bottom": 1549.0,
+            "confidence": 0.96694016,
+            "source_index": 42
+          }
+        },
+        "rows": 4,
+        "months_detected": [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ],
+        "populated_cells": 12
+      },
+      "regions": [
+        {
+          "text": "January",
+          "left": 299.0,
+          "top": 370.0,
+          "right": 446.0,
+          "bottom": 413.0,
+          "confidence": 0.9620494100000001,
+          "source_index": 0
+        },
+        {
+          "text": "February",
+          "left": 695.0,
+          "top": 369.0,
+          "right": 863.0,
+          "bottom": 413.0,
+          "confidence": 0.96528694,
+          "source_index": 1
+        },
+        {
+          "text": "March",
+          "left": 1124.0,
+          "top": 369.0,
+          "right": 1243.0,
+          "bottom": 402.0,
+          "confidence": 0.9672757,
+          "source_index": 2
+        },
+        {
+          "text": "Pepe LePew debuts in",
+          "left": 202.0,
+          "top": 548.0,
+          "right": 529.0,
+          "bottom": 583.0,
+          "confidence": 0.9458615275,
+          "source_index": 4
+        },
+        {
+          "text": "Walt Disney\u2019s",
+          "left": 676.0,
+          "top": 550.0,
+          "right": 882.0,
+          "bottom": 583.0,
+          "confidence": 0.927937735,
+          "source_index": 5
+        },
+        {
+          "text": "Phyllis M. Daley",
+          "left": 1073.0,
+          "top": 550.0,
+          "right": 1313.0,
+          "bottom": 583.0,
+          "confidence": 0.94123568,
+          "source_index": 6
+        },
+        {
+          "text": "the Warner Bros cartoon",
+          "left": 184.0,
+          "top": 596.0,
+          "right": 547.0,
+          "bottom": 622.0,
+          "confidence": 0.9668728050000001,
+          "source_index": 7
+        },
+        {
+          "text": "The 3 Caballeros",
+          "left": 659.0,
+          "top": 597.0,
+          "right": 902.0,
+          "bottom": 623.0,
+          "confidence": 0.9645538833333335,
+          "source_index": 8
+        },
+        {
+          "text": "is the first black",
+          "left": 1077.0,
+          "top": 597.0,
+          "right": 1308.0,
+          "bottom": 622.0,
+          "confidence": 0.96966135,
+          "source_index": 9
+        },
+        {
+          "text": "Odor-able Kitty.",
+          "left": 245.0,
+          "top": 644.0,
+          "right": 486.0,
+          "bottom": 678.0,
+          "confidence": 0.94749405,
+          "source_index": 10
+        },
+        {
+          "text": "opens in New York.",
+          "left": 637.0,
+          "top": 644.0,
+          "right": 923.0,
+          "bottom": 678.0,
+          "confidence": 0.9657960699999999,
+          "source_index": 11
+        },
+        {
+          "text": "nurse sworn-in as a",
+          "left": 1054.0,
+          "top": 645.0,
+          "right": 1332.0,
+          "bottom": 670.0,
+          "confidence": 0.9399184775,
+          "source_index": 12
+        },
+        {
+          "text": "U.S. Navy ensign.",
+          "left": 1063.0,
+          "top": 691.0,
+          "right": 1322.0,
+          "bottom": 724.0,
+          "confidence": 0.9023438,
+          "source_index": 13
+        },
+        {
+          "text": "April",
+          "left": 323.0,
+          "top": 763.0,
+          "right": 420.0,
+          "bottom": 806.0,
+          "confidence": 0.96473663,
+          "source_index": 14
+        },
+        {
+          "text": "May",
+          "left": 730.0,
+          "top": 764.0,
+          "right": 811.0,
+          "bottom": 806.0,
+          "confidence": 0.96558586,
+          "source_index": 15
+        },
+        {
+          "text": "June",
+          "left": 1136.0,
+          "top": 764.0,
+          "right": 1219.0,
+          "bottom": 803.0,
+          "confidence": 0.96718048,
+          "source_index": 16
+        },
+        {
+          "text": "a ec at Se",
+          "left": 157.0,
+          "top": 748.0,
+          "right": 1371.0,
+          "bottom": 956.0,
+          "confidence": 0.3124040225,
+          "source_index": 17
+        },
+        {
+          "text": "The NFL requires",
+          "left": 232.0,
+          "top": 933.0,
+          "right": 496.0,
+          "bottom": 966.0,
+          "confidence": 0.9681311266666667,
+          "source_index": 18
+        },
+        {
+          "text": "Arthur C. Clarke",
+          "left": 653.0,
+          "top": 933.0,
+          "right": 897.0,
+          "bottom": 958.0,
+          "confidence": 0.9389468366666667,
+          "source_index": 19
+        },
+        {
+          "text": "The Charter of",
+          "left": 1082.0,
+          "top": 933.0,
+          "right": 1297.0,
+          "bottom": 958.0,
+          "confidence": 0.9677603633333334,
+          "source_index": 20
+        },
+        {
+          "text": "players to wear",
+          "left": 252.0,
+          "top": 978.0,
+          "right": 478.0,
+          "bottom": 1011.0,
+          "confidence": 0.9666978166666667,
+          "source_index": 21
+        },
+        {
+          "text": "proposes relay satellites",
+          "left": 605.0,
+          "top": 977.0,
+          "right": 945.0,
+          "bottom": 1011.0,
+          "confidence": 0.9684299466666667,
+          "source_index": 22
+        },
+        {
+          "text": "the United Nations",
+          "left": 1052.0,
+          "top": 978.0,
+          "right": 1327.0,
+          "bottom": 1003.0,
+          "confidence": 0.9671220633333334,
+          "source_index": 23
+        },
+        {
+          "text": "long stockings.",
+          "left": 252.0,
+          "top": 1022.0,
+          "right": 476.0,
+          "bottom": 1055.0,
+          "confidence": 0.966400835,
+          "source_index": 24
+        },
+        {
+          "text": "in geosynchronous orbit.",
+          "left": 597.0,
+          "top": 1022.0,
+          "right": 956.0,
+          "bottom": 1055.0,
+          "confidence": 0.93379158,
+          "source_index": 25
+        },
+        {
+          "text": "is signed.",
+          "left": 1123.0,
+          "top": 1022.0,
+          "right": 1256.0,
+          "bottom": 1055.0,
+          "confidence": 0.965360335,
+          "source_index": 26
+        },
+        {
+          "text": "July",
+          "left": 328.0,
+          "top": 1138.0,
+          "right": 403.0,
+          "bottom": 1182.0,
+          "confidence": 0.96956169,
+          "source_index": 27
+        },
+        {
+          "text": "August",
+          "left": 702.0,
+          "top": 1140.0,
+          "right": 835.0,
+          "bottom": 1182.0,
+          "confidence": 0.9684072899999999,
+          "source_index": 28
+        },
+        {
+          "text": "September",
+          "left": 1081.0,
+          "top": 1139.0,
+          "right": 1273.0,
+          "bottom": 1182.0,
+          "confidence": 0.96726257,
+          "source_index": 29
+        },
+        {
+          "text": "je",
+          "left": 161.0,
+          "top": 1182.0,
+          "right": 1370.0,
+          "bottom": 1284.0,
+          "confidence": 0.41019416999999997,
+          "source_index": 30
+        },
+        {
+          "text": "A U.S. Army bomber",
+          "left": 211.0,
+          "top": 1300.0,
+          "right": 519.0,
+          "bottom": 1333.0,
+          "confidence": 0.8217913649999999,
+          "source_index": 31
+        },
+        {
+          "text": "In Washington, the 35",
+          "left": 617.0,
+          "top": 1300.0,
+          "right": 934.0,
+          "bottom": 1333.0,
+          "confidence": 0.957713795,
+          "source_index": 32
+        },
+        {
+          "text": "The U.S. regains",
+          "left": 1069.0,
+          "top": 1300.0,
+          "right": 1302.0,
+          "bottom": 1333.0,
+          "confidence": 0.9521966533333334,
+          "source_index": 33
+        },
+        {
+          "text": "crashes into the 79th",
+          "left": 216.0,
+          "top": 1344.0,
+          "right": 514.0,
+          "bottom": 1370.0,
+          "confidence": 0.966720505,
+          "source_index": 34
+        },
+        {
+          "text": "mph speed limit ends.",
+          "left": 619.0,
+          "top": 1344.0,
+          "right": 932.0,
+          "bottom": 1378.0,
+          "confidence": 0.9658948125,
+          "source_index": 35
+        },
+        {
+          "text": "possession of Wake",
+          "left": 1047.0,
+          "top": 1344.0,
+          "right": 1325.0,
+          "bottom": 1377.0,
+          "confidence": 0.9666374966666668,
+          "source_index": 36
+        },
+        {
+          "text": "floor of the Empire",
+          "left": 226.0,
+          "top": 1390.0,
+          "right": 504.0,
+          "bottom": 1423.0,
+          "confidence": 0.967523495,
+          "source_index": 37
+        },
+        {
+          "text": "Island from Japan.",
+          "left": 1054.0,
+          "top": 1389.0,
+          "right": 1318.0,
+          "bottom": 1423.0,
+          "confidence": 0.96667193,
+          "source_index": 38
+        },
+        {
+          "text": "State Building.",
+          "left": 256.0,
+          "top": 1436.0,
+          "right": 473.0,
+          "bottom": 1469.0,
+          "confidence": 0.9630854,
+          "source_index": 39
+        },
+        {
+          "text": "October",
+          "left": 291.0,
+          "top": 1516.0,
+          "right": 429.0,
+          "bottom": 1549.0,
+          "confidence": 0.9669522899999999,
+          "source_index": 40
+        },
+        {
+          "text": "November",
+          "left": 677.0,
+          "top": 1516.0,
+          "right": 861.0,
+          "bottom": 1549.0,
+          "confidence": 0.9655831899999999,
+          "source_index": 41
+        },
+        {
+          "text": "December",
+          "left": 1093.0,
+          "top": 1516.0,
+          "right": 1266.0,
+          "bottom": 1549.0,
+          "confidence": 0.96694016,
+          "source_index": 42
+        },
+        {
+          "text": "Jackie Robinson is",
+          "left": 232.0,
+          "top": 1658.0,
+          "right": 482.0,
+          "bottom": 1688.0,
+          "confidence": 0.9654730733333333,
+          "source_index": 44
+        },
+        {
+          "text": "The first issue of Ebony",
+          "left": 607.0,
+          "top": 1658.0,
+          "right": 934.0,
+          "bottom": 1691.0,
+          "confidence": 0.967777878,
+          "source_index": 45
+        },
+        {
+          "text": "The microwave",
+          "left": 1074.0,
+          "top": 1659.0,
+          "right": 1293.0,
+          "bottom": 1684.0,
+          "confidence": 0.9635997000000001,
+          "source_index": 46
+        },
+        {
+          "text": "chosen to integrate",
+          "left": 232.0,
+          "top": 1698.0,
+          "right": 485.0,
+          "bottom": 1729.0,
+          "confidence": 0.9666776533333333,
+          "source_index": 47
+        },
+        {
+          "text": "magazine is published",
+          "left": 617.0,
+          "top": 1704.0,
+          "right": 924.0,
+          "bottom": 1737.0,
+          "confidence": 0.9649820433333334,
+          "source_index": 48
+        },
+        {
+          "text": "oven is patented.",
+          "left": 1064.0,
+          "top": 1704.0,
+          "right": 1303.0,
+          "bottom": 1737.0,
+          "confidence": 0.9591214966666667,
+          "source_index": 49
+        },
+        {
+          "text": "baseball and signs with",
+          "left": 206.0,
+          "top": 1738.0,
+          "right": 513.0,
+          "bottom": 1769.0,
+          "confidence": 0.9654800225,
+          "source_index": 50
+        },
+        {
+          "text": "by John H. Johnson.",
+          "left": 633.0,
+          "top": 1749.0,
+          "right": 907.0,
+          "bottom": 1781.0,
+          "confidence": 0.949303475,
+          "source_index": 51
+        },
+        {
+          "text": "the Montreal Royals, the",
+          "left": 198.0,
+          "top": 1778.0,
+          "right": 520.0,
+          "bottom": 1810.0,
+          "confidence": 0.9686060125,
+          "source_index": 52
+        },
+        {
+          "text": "top Dodgers farm team.",
+          "left": 202.0,
+          "top": 1819.0,
+          "right": 515.0,
+          "bottom": 1851.0,
+          "confidence": 0.965587215,
+          "source_index": 53
+        },
+        {
+          "text": "SeekPublishing",
+          "left": 151.0,
+          "top": 1896.0,
+          "right": 369.0,
+          "bottom": 1928.0,
+          "confidence": 0.9155804399999999,
+          "source_index": 54
+        },
+        {
+          "text": "Remember When",
+          "left": 639.0,
+          "top": 1896.0,
+          "right": 888.0,
+          "bottom": 1921.0,
+          "confidence": 0.9650455499999999,
+          "source_index": 55
+        },
+        {
+          "text": "1945",
+          "left": 1324.0,
+          "top": 1897.0,
+          "right": 1387.0,
+          "bottom": 1920.0,
+          "confidence": 0.96647667,
+          "source_index": 56
+        }
+      ],
+      "page": 3
+    },
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "1945 WORLD News \u00a7 Italian partisans kill Benito Mussolini After destroying major cities in Germany, Hitler commits suicide. WWII comes to an end, May 8 in Europe, and Aug. 14 in the Pacific, after involving 57 nations. 55 million people died. Soviet troops liberate prisoners of the concentration camp at Auschwitz. Several million people died during the course of the Holocaust, both in and out of German camps. The American flag is raised over Iwo Jima. United Nations convenes with representatives from 51 nations. SeekPublishing Remember When 1945",
+      "reading_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "1945 WORLD",
+          "left": 337.0,
+          "top": 88.0,
+          "right": 906.0,
+          "bottom": 272.0,
+          "confidence": 0.822301025,
+          "source_index": 0
+        },
+        {
+          "text": "News \u00a7",
+          "left": 943.0,
+          "top": 88.0,
+          "right": 1342.0,
+          "bottom": 274.0,
+          "confidence": 0.48709819499999996,
+          "source_index": 1
+        },
+        {
+          "text": "Italian partisans kill Benito Mussolini",
+          "left": 241.0,
+          "top": 371.0,
+          "right": 1285.0,
+          "bottom": 430.0,
+          "confidence": 0.9626584319999999,
+          "source_index": 2
+        },
+        {
+          "text": "After destroying major cities in",
+          "left": 344.0,
+          "top": 500.0,
+          "right": 1196.0,
+          "bottom": 560.0,
+          "confidence": 0.965744566,
+          "source_index": 3
+        },
+        {
+          "text": "Germany, Hitler commits suicide.",
+          "left": 315.0,
+          "top": 569.0,
+          "right": 1225.0,
+          "bottom": 629.0,
+          "confidence": 0.963691445,
+          "source_index": 4
+        },
+        {
+          "text": "WWII comes to an end, May 8",
+          "left": 363.0,
+          "top": 702.0,
+          "right": 1177.0,
+          "bottom": 762.0,
+          "confidence": 0.9620668357142856,
+          "source_index": 6
+        },
+        {
+          "text": "in Europe, and Aug. 14 in the",
+          "left": 379.0,
+          "top": 770.0,
+          "right": 1163.0,
+          "bottom": 830.0,
+          "confidence": 0.96614528,
+          "source_index": 7
+        },
+        {
+          "text": "Pacific, after involving 57 nations.",
+          "left": 315.0,
+          "top": 837.0,
+          "right": 1226.0,
+          "bottom": 897.0,
+          "confidence": 0.965731122,
+          "source_index": 8
+        },
+        {
+          "text": "55 million people died.",
+          "left": 461.0,
+          "top": 904.0,
+          "right": 1080.0,
+          "bottom": 964.0,
+          "confidence": 0.9614195275,
+          "source_index": 9
+        },
+        {
+          "text": "Soviet troops liberate prisoners",
+          "left": 355.0,
+          "top": 1036.0,
+          "right": 1188.0,
+          "bottom": 1096.0,
+          "confidence": 0.9657981274999999,
+          "source_index": 11
+        },
+        {
+          "text": "of the concentration camp at",
+          "left": 395.0,
+          "top": 1104.0,
+          "right": 1150.0,
+          "bottom": 1162.0,
+          "confidence": 0.965460968,
+          "source_index": 12
+        },
+        {
+          "text": "Auschwitz. Several million people died",
+          "left": 243.0,
+          "top": 1169.0,
+          "right": 1296.0,
+          "bottom": 1229.0,
+          "confidence": 0.963348298,
+          "source_index": 13
+        },
+        {
+          "text": "during the course of the Holocaust,",
+          "left": 304.0,
+          "top": 1237.0,
+          "right": 1238.0,
+          "bottom": 1298.0,
+          "confidence": 0.9605712366666667,
+          "source_index": 14
+        },
+        {
+          "text": "both in and out of German camps.",
+          "left": 314.0,
+          "top": 1304.0,
+          "right": 1226.0,
+          "bottom": 1363.0,
+          "confidence": 0.9613774757142857,
+          "source_index": 15
+        },
+        {
+          "text": "The American flag is raised",
+          "left": 401.0,
+          "top": 1439.0,
+          "right": 1138.0,
+          "bottom": 1500.0,
+          "confidence": 0.9613053,
+          "source_index": 17
+        },
+        {
+          "text": "over Iwo Jima.",
+          "left": 578.0,
+          "top": 1508.0,
+          "right": 962.0,
+          "bottom": 1565.0,
+          "confidence": 0.9597578200000001,
+          "source_index": 18
+        },
+        {
+          "text": "United Nations convenes with",
+          "left": 364.0,
+          "top": 1638.0,
+          "right": 1171.0,
+          "bottom": 1684.0,
+          "confidence": 0.9599931525000001,
+          "source_index": 19
+        },
+        {
+          "text": "representatives from 51 nations.",
+          "left": 345.0,
+          "top": 1705.0,
+          "right": 1190.0,
+          "bottom": 1764.0,
+          "confidence": 0.9624262425000001,
+          "source_index": 20
+        },
+        {
+          "text": "SeekPublishing",
+          "left": 128.0,
+          "top": 1892.0,
+          "right": 347.0,
+          "bottom": 1923.0,
+          "confidence": 0.9222778300000001,
+          "source_index": 21
+        },
+        {
+          "text": "Remember When",
+          "left": 646.0,
+          "top": 1892.0,
+          "right": 894.0,
+          "bottom": 1916.0,
+          "confidence": 0.9588584899999999,
+          "source_index": 22
+        },
+        {
+          "text": "1945",
+          "left": 1337.0,
+          "top": 1892.0,
+          "right": 1399.0,
+          "bottom": 1916.0,
+          "confidence": 0.96390152,
+          "source_index": 23
+        }
+      ],
+      "page": 4
+    },
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "Harry Truman takes the office of President after Roosevelt passes away. Japanese Americans are permitted to return to the west coast. SS The United Auto Workers strike against GM for 113 days. Grand Rapids, Michigan, is the first United States community to fluoridate water. ee In 1945, 5,000 homes have television sets. Ball point pens, Tupperware and frozen orange juice all hit the market. United States army general George S. Patton passes away. SeekPublishing Remember When 1945",
+      "reading_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "Harry Truman takes the",
+          "left": 469.0,
+          "top": 328.0,
+          "right": 1095.0,
+          "bottom": 388.0,
+          "confidence": 0.9626560224999999,
+          "source_index": 0
+        },
+        {
+          "text": "office of President after",
+          "left": 477.0,
+          "top": 392.0,
+          "right": 1088.0,
+          "bottom": 436.0,
+          "confidence": 0.9599327874999999,
+          "source_index": 1
+        },
+        {
+          "text": "Roosevelt passes away.",
+          "left": 488.0,
+          "top": 455.0,
+          "right": 1077.0,
+          "bottom": 514.0,
+          "confidence": 0.96458829,
+          "source_index": 2
+        },
+        {
+          "text": "Japanese Americans are permitted",
+          "left": 349.0,
+          "top": 588.0,
+          "right": 1217.0,
+          "bottom": 647.0,
+          "confidence": 0.966193445,
+          "source_index": 3
+        },
+        {
+          "text": "to return to the west coast.",
+          "left": 445.0,
+          "top": 653.0,
+          "right": 1118.0,
+          "bottom": 697.0,
+          "confidence": 0.963445285,
+          "source_index": 4
+        },
+        {
+          "text": "SS",
+          "left": 735.0,
+          "top": 737.0,
+          "right": 844.0,
+          "bottom": 751.0,
+          "confidence": 0.34141562999999997,
+          "source_index": 5
+        },
+        {
+          "text": "The United Auto Workers strike",
+          "left": 376.0,
+          "top": 786.0,
+          "right": 1192.0,
+          "bottom": 831.0,
+          "confidence": 0.9646843860000001,
+          "source_index": 6
+        },
+        {
+          "text": "against GM for 113 days.",
+          "left": 474.0,
+          "top": 850.0,
+          "right": 1098.0,
+          "bottom": 910.0,
+          "confidence": 0.9667147500000001,
+          "source_index": 7
+        },
+        {
+          "text": "Grand Rapids, Michigan, is",
+          "left": 445.0,
+          "top": 985.0,
+          "right": 1130.0,
+          "bottom": 1044.0,
+          "confidence": 0.9661953925,
+          "source_index": 9
+        },
+        {
+          "text": "the first United States community",
+          "left": 365.0,
+          "top": 1048.0,
+          "right": 1201.0,
+          "bottom": 1107.0,
+          "confidence": 0.963251312,
+          "source_index": 10
+        },
+        {
+          "text": "to fluoridate water.",
+          "left": 549.0,
+          "top": 1111.0,
+          "right": 1023.0,
+          "bottom": 1155.0,
+          "confidence": 0.9424370799999999,
+          "source_index": 11
+        },
+        {
+          "text": "ee",
+          "left": 734.0,
+          "top": 1189.0,
+          "right": 843.0,
+          "bottom": 1203.0,
+          "confidence": 0.38661327,
+          "source_index": 12
+        },
+        {
+          "text": "In 1945, 5,000 homes have",
+          "left": 471.0,
+          "top": 1237.0,
+          "right": 1099.0,
+          "bottom": 1288.0,
+          "confidence": 0.96393761,
+          "source_index": 13
+        },
+        {
+          "text": "television sets.",
+          "left": 607.0,
+          "top": 1298.0,
+          "right": 966.0,
+          "bottom": 1342.0,
+          "confidence": 0.96587334,
+          "source_index": 14
+        },
+        {
+          "text": "Ball point pens, Tupperware",
+          "left": 438.0,
+          "top": 1425.0,
+          "right": 1130.0,
+          "bottom": 1481.0,
+          "confidence": 0.9579520025,
+          "source_index": 15
+        },
+        {
+          "text": "and frozen orange juice",
+          "left": 499.0,
+          "top": 1486.0,
+          "right": 1068.0,
+          "bottom": 1543.0,
+          "confidence": 0.959453655,
+          "source_index": 16
+        },
+        {
+          "text": "all hit the market.",
+          "left": 569.0,
+          "top": 1546.0,
+          "right": 998.0,
+          "bottom": 1589.0,
+          "confidence": 0.964583875,
+          "source_index": 17
+        },
+        {
+          "text": "United States army general",
+          "left": 458.0,
+          "top": 1669.0,
+          "right": 1108.0,
+          "bottom": 1726.0,
+          "confidence": 0.9649874125,
+          "source_index": 19
+        },
+        {
+          "text": "George S. Patton passes away.",
+          "left": 426.0,
+          "top": 1728.0,
+          "right": 1140.0,
+          "bottom": 1784.0,
+          "confidence": 0.947642578,
+          "source_index": 20
+        },
+        {
+          "text": "SeekPublishing",
+          "left": 217.0,
+          "top": 1865.0,
+          "right": 439.0,
+          "bottom": 1899.0,
+          "confidence": 0.922342,
+          "source_index": 21
+        },
+        {
+          "text": "Remember When",
+          "left": 670.0,
+          "top": 1867.0,
+          "right": 916.0,
+          "bottom": 1893.0,
+          "confidence": 0.962945445,
+          "source_index": 22
+        },
+        {
+          "text": "1945",
+          "left": 1281.0,
+          "top": 1867.0,
+          "right": 1343.0,
+          "bottom": 1893.0,
+          "confidence": 0.9056438400000001,
+          "source_index": 23
+        }
+      ],
+      "page": 5
+    },
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "$1945 | NTERESTING \u20185 Ay Ae 4 Vice President of President of the United States the United States Franklin Roosevelt Harry Truman Then Then None Harry Truman Pulitzer Prize Winner A Bell for Adano by John Hersey Nobel Peace Prize Winner Cordell Hull Miss America Bess Myerson (New York, NY) Speaker of the House of Representatives Sam T. Rayburn (D) Canadian Prime Minister William Lyon Mackenzie King Life Expectancy 62.9 Years REMEMBER WHEN... POPULAR RADIO SHOWS IN 1945 INCLUDED \u201cBREAK THE BANK,\u201d \u201cMEET THE PRESS\u201d AND \u201cGREEN HORNET.\u201d SeekPublishing Remember When 1945",
+      "reading_order": [
+        1,
+        0,
+        3,
+        5,
+        4,
+        7,
+        10,
+        9,
+        11,
+        12,
+        13,
+        14,
+        16,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "NTERESTING",
+          "left": 514.0,
+          "top": 122.0,
+          "right": 1010.0,
+          "bottom": 175.0,
+          "confidence": 0.92276627,
+          "source_index": 0
+        },
+        {
+          "text": "$1945 |",
+          "left": 181.0,
+          "top": 60.0,
+          "right": 515.0,
+          "bottom": 285.0,
+          "confidence": 0.530876275,
+          "source_index": 1
+        },
+        {
+          "text": "\u20185",
+          "left": 396.0,
+          "top": 252.0,
+          "right": 528.0,
+          "bottom": 428.0,
+          "confidence": 0.31694763,
+          "source_index": 3
+        },
+        {
+          "text": "Ae",
+          "left": 966.0,
+          "top": 448.0,
+          "right": 1010.0,
+          "bottom": 474.0,
+          "confidence": 0.32510033,
+          "source_index": 4
+        },
+        {
+          "text": "Ay",
+          "left": 969.0,
+          "top": 373.0,
+          "right": 1074.0,
+          "bottom": 459.0,
+          "confidence": 0.68886948,
+          "source_index": 5
+        },
+        {
+          "text": "4",
+          "left": 1094.0,
+          "top": 462.0,
+          "right": 1103.0,
+          "bottom": 474.0,
+          "confidence": 0.41668358,
+          "source_index": 7
+        },
+        {
+          "text": "President of the",
+          "left": 286.0,
+          "top": 490.0,
+          "right": 655.0,
+          "bottom": 528.0,
+          "confidence": 0.9656706466666667,
+          "source_index": 9
+        },
+        {
+          "text": "Vice President of",
+          "left": 849.0,
+          "top": 470.0,
+          "right": 1240.0,
+          "bottom": 528.0,
+          "confidence": 0.9663991266666666,
+          "source_index": 10
+        },
+        {
+          "text": "United States",
+          "left": 315.0,
+          "top": 550.0,
+          "right": 627.0,
+          "bottom": 588.0,
+          "confidence": 0.967414165,
+          "source_index": 11
+        },
+        {
+          "text": "the United States",
+          "left": 849.0,
+          "top": 550.0,
+          "right": 1239.0,
+          "bottom": 588.0,
+          "confidence": 0.9677331800000001,
+          "source_index": 12
+        },
+        {
+          "text": "Franklin Roosevelt",
+          "left": 263.0,
+          "top": 610.0,
+          "right": 683.0,
+          "bottom": 649.0,
+          "confidence": 0.962670935,
+          "source_index": 13
+        },
+        {
+          "text": "Harry Truman",
+          "left": 893.0,
+          "top": 610.0,
+          "right": 1214.0,
+          "bottom": 660.0,
+          "confidence": 0.9642896249999999,
+          "source_index": 14
+        },
+        {
+          "text": "Then",
+          "left": 432.0,
+          "top": 669.0,
+          "right": 510.0,
+          "bottom": 695.0,
+          "confidence": 0.95967796,
+          "source_index": 15
+        },
+        {
+          "text": "Then",
+          "left": 1014.0,
+          "top": 667.0,
+          "right": 1091.0,
+          "bottom": 692.0,
+          "confidence": 0.96217392,
+          "source_index": 16
+        },
+        {
+          "text": "None",
+          "left": 995.0,
+          "top": 716.0,
+          "right": 1113.0,
+          "bottom": 753.0,
+          "confidence": 0.96513542,
+          "source_index": 17
+        },
+        {
+          "text": "Harry Truman",
+          "left": 308.0,
+          "top": 720.0,
+          "right": 639.0,
+          "bottom": 770.0,
+          "confidence": 0.9613554,
+          "source_index": 18
+        },
+        {
+          "text": "Pulitzer Prize Winner",
+          "left": 496.0,
+          "top": 807.0,
+          "right": 1058.0,
+          "bottom": 851.0,
+          "confidence": 0.9633222199999999,
+          "source_index": 19
+        },
+        {
+          "text": "A Bell for Adano by John Hersey",
+          "left": 444.0,
+          "top": 869.0,
+          "right": 1106.0,
+          "bottom": 921.0,
+          "confidence": 0.95588416,
+          "source_index": 20
+        },
+        {
+          "text": "Nobel Peace Prize Winner",
+          "left": 439.0,
+          "top": 961.0,
+          "right": 1114.0,
+          "bottom": 1004.0,
+          "confidence": 0.963239365,
+          "source_index": 21
+        },
+        {
+          "text": "Cordell Hull",
+          "left": 657.0,
+          "top": 1021.0,
+          "right": 905.0,
+          "bottom": 1059.0,
+          "confidence": 0.965624965,
+          "source_index": 22
+        },
+        {
+          "text": "Miss America",
+          "left": 603.0,
+          "top": 1112.0,
+          "right": 956.0,
+          "bottom": 1155.0,
+          "confidence": 0.96409744,
+          "source_index": 23
+        },
+        {
+          "text": "Bess Myerson (New York, NY)",
+          "left": 466.0,
+          "top": 1174.0,
+          "right": 1086.0,
+          "bottom": 1225.0,
+          "confidence": 0.9658609300000001,
+          "source_index": 24
+        },
+        {
+          "text": "Speaker of the House of Representatives",
+          "left": 259.0,
+          "top": 1267.0,
+          "right": 1286.0,
+          "bottom": 1324.0,
+          "confidence": 0.9638899983333333,
+          "source_index": 25
+        },
+        {
+          "text": "Sam T. Rayburn (D)",
+          "left": 571.0,
+          "top": 1328.0,
+          "right": 984.0,
+          "bottom": 1379.0,
+          "confidence": 0.9299882325,
+          "source_index": 26
+        },
+        {
+          "text": "Canadian Prime Minister",
+          "left": 456.0,
+          "top": 1418.0,
+          "right": 1101.0,
+          "bottom": 1460.0,
+          "confidence": 0.9625432866666667,
+          "source_index": 27
+        },
+        {
+          "text": "William Lyon Mackenzie King",
+          "left": 478.0,
+          "top": 1476.0,
+          "right": 1082.0,
+          "bottom": 1525.0,
+          "confidence": 0.9607701875,
+          "source_index": 28
+        },
+        {
+          "text": "Life Expectancy",
+          "left": 577.0,
+          "top": 1558.0,
+          "right": 978.0,
+          "bottom": 1614.0,
+          "confidence": 0.9649781449999999,
+          "source_index": 29
+        },
+        {
+          "text": "62.9 Years",
+          "left": 675.0,
+          "top": 1617.0,
+          "right": 880.0,
+          "bottom": 1652.0,
+          "confidence": 0.96285385,
+          "source_index": 30
+        },
+        {
+          "text": "REMEMBER WHEN...",
+          "left": 549.0,
+          "top": 1708.0,
+          "right": 992.0,
+          "bottom": 1748.0,
+          "confidence": 0.96155563,
+          "source_index": 31
+        },
+        {
+          "text": "POPULAR RADIO SHOWS IN 1945 INCLUDED",
+          "left": 364.0,
+          "top": 1760.0,
+          "right": 1175.0,
+          "bottom": 1793.0,
+          "confidence": 0.9616417566666667,
+          "source_index": 32
+        },
+        {
+          "text": "\u201cBREAK THE BANK,\u201d \u201cMEET THE PRESS\u201d",
+          "left": 386.0,
+          "top": 1805.0,
+          "right": 1151.0,
+          "bottom": 1845.0,
+          "confidence": 0.940453745,
+          "source_index": 33
+        },
+        {
+          "text": "AND \u201cGREEN HORNET.\u201d",
+          "left": 539.0,
+          "top": 1852.0,
+          "right": 997.0,
+          "bottom": 1886.0,
+          "confidence": 0.9612347933333333,
+          "source_index": 34
+        },
+        {
+          "text": "SeekPublishing",
+          "left": 155.0,
+          "top": 1919.0,
+          "right": 361.0,
+          "bottom": 1947.0,
+          "confidence": 0.92149872,
+          "source_index": 35
+        },
+        {
+          "text": "Remember When",
+          "left": 623.0,
+          "top": 1919.0,
+          "right": 856.0,
+          "bottom": 1941.0,
+          "confidence": 0.964871255,
+          "source_index": 36
+        },
+        {
+          "text": "1945",
+          "left": 1307.0,
+          "top": 1919.0,
+          "right": 1365.0,
+          "bottom": 1940.0,
+          "confidence": 0.9657237999999999,
+          "source_index": 37
+        }
+      ],
+      "page": 6
+    },
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "1945 Cost OF LIVING LIVING $4,625.00 New House $2,390.00 per year Average Income $1,025.00 New Car $60.00 per month Average Rent $420.00 per year Tuition to Harvard University 50\u00a2 each Movie Ticket Gasoline 15\u00a2 per gallon First-Class Postage Stamp 3\u00a2 each SI Granulated Sugar 75\u00a2 for 10 pounds 62\u00a2 per gallon Vitamin D Milk Ground Coffee 50\u00a2 per pound 45\u00a2 per pound Bacon 22\u00a2 per dozen Eggs Fresh Ground Hamburger 35\u00a2 per pound Fresh Baked Bread 9\u00a2 per loaf SeekPublishing 1945 Remember When",
+      "reading_order": [
+        0,
+        1,
+        3,
+        2,
+        5,
+        4,
+        7,
+        6,
+        9,
+        8,
+        11,
+        10,
+        13,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20,
+        21,
+        23,
+        22,
+        24,
+        25,
+        27,
+        26,
+        29,
+        28,
+        30,
+        31,
+        32,
+        33,
+        36,
+        35,
+        34
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "1945 Cost OF LIVING",
+          "left": 320.0,
+          "top": 70.0,
+          "right": 1270.0,
+          "bottom": 250.0,
+          "confidence": 0.8793414675,
+          "source_index": 0
+        },
+        {
+          "text": "LIVING",
+          "left": 676.0,
+          "top": 288.0,
+          "right": 899.0,
+          "bottom": 342.0,
+          "confidence": 0.96177071,
+          "source_index": 1
+        },
+        {
+          "text": "New House",
+          "left": 226.0,
+          "top": 385.0,
+          "right": 480.0,
+          "bottom": 420.0,
+          "confidence": 0.966799505,
+          "source_index": 2
+        },
+        {
+          "text": "$4,625.00",
+          "left": 971.0,
+          "top": 382.0,
+          "right": 1155.0,
+          "bottom": 425.0,
+          "confidence": 0.96876701,
+          "source_index": 3
+        },
+        {
+          "text": "Average Income",
+          "left": 226.0,
+          "top": 473.0,
+          "right": 575.0,
+          "bottom": 519.0,
+          "confidence": 0.9637844850000001,
+          "source_index": 4
+        },
+        {
+          "text": "$2,390.00 per year",
+          "left": 970.0,
+          "top": 469.0,
+          "right": 1331.0,
+          "bottom": 519.0,
+          "confidence": 0.9679453566666667,
+          "source_index": 5
+        },
+        {
+          "text": "New Car",
+          "left": 226.0,
+          "top": 561.0,
+          "right": 416.0,
+          "bottom": 596.0,
+          "confidence": 0.96822067,
+          "source_index": 6
+        },
+        {
+          "text": "$1,025.00",
+          "left": 970.0,
+          "top": 558.0,
+          "right": 1154.0,
+          "bottom": 601.0,
+          "confidence": 0.96549858,
+          "source_index": 7
+        },
+        {
+          "text": "Average Rent",
+          "left": 226.0,
+          "top": 650.0,
+          "right": 517.0,
+          "bottom": 696.0,
+          "confidence": 0.9662940600000001,
+          "source_index": 8
+        },
+        {
+          "text": "$60.00 per month",
+          "left": 970.0,
+          "top": 647.0,
+          "right": 1319.0,
+          "bottom": 696.0,
+          "confidence": 0.96592565,
+          "source_index": 9
+        },
+        {
+          "text": "Tuition to Harvard University",
+          "left": 226.0,
+          "top": 737.0,
+          "right": 880.0,
+          "bottom": 785.0,
+          "confidence": 0.9613454075000001,
+          "source_index": 10
+        },
+        {
+          "text": "$420.00 per year",
+          "left": 970.0,
+          "top": 736.0,
+          "right": 1298.0,
+          "bottom": 785.0,
+          "confidence": 0.9669792933333333,
+          "source_index": 11
+        },
+        {
+          "text": "Movie Ticket",
+          "left": 226.0,
+          "top": 826.0,
+          "right": 512.0,
+          "bottom": 862.0,
+          "confidence": 0.9670127850000001,
+          "source_index": 12
+        },
+        {
+          "text": "50\u00a2 each",
+          "left": 969.0,
+          "top": 825.0,
+          "right": 1139.0,
+          "bottom": 861.0,
+          "confidence": 0.94481819,
+          "source_index": 13
+        },
+        {
+          "text": "Gasoline",
+          "left": 227.0,
+          "top": 914.0,
+          "right": 416.0,
+          "bottom": 951.0,
+          "confidence": 0.96636131,
+          "source_index": 14
+        },
+        {
+          "text": "15\u00a2 per gallon",
+          "left": 970.0,
+          "top": 914.0,
+          "right": 1253.0,
+          "bottom": 963.0,
+          "confidence": 0.94557266,
+          "source_index": 15
+        },
+        {
+          "text": "First-Class Postage Stamp",
+          "left": 227.0,
+          "top": 1004.0,
+          "right": 788.0,
+          "bottom": 1053.0,
+          "confidence": 0.9643594900000001,
+          "source_index": 16
+        },
+        {
+          "text": "3\u00a2 each",
+          "left": 969.0,
+          "top": 1004.0,
+          "right": 1116.0,
+          "bottom": 1040.0,
+          "confidence": 0.94999134,
+          "source_index": 17
+        },
+        {
+          "text": "SI",
+          "left": 624.0,
+          "top": 1107.0,
+          "right": 974.0,
+          "bottom": 1143.0,
+          "confidence": 0.47529556,
+          "source_index": 18
+        },
+        {
+          "text": "Granulated Sugar",
+          "left": 227.0,
+          "top": 1258.0,
+          "right": 614.0,
+          "bottom": 1307.0,
+          "confidence": 0.96501877,
+          "source_index": 20
+        },
+        {
+          "text": "75\u00a2 for 10 pounds",
+          "left": 970.0,
+          "top": 1258.0,
+          "right": 1326.0,
+          "bottom": 1307.0,
+          "confidence": 0.95280615,
+          "source_index": 21
+        },
+        {
+          "text": "Vitamin D Milk",
+          "left": 226.0,
+          "top": 1349.0,
+          "right": 577.0,
+          "bottom": 1385.0,
+          "confidence": 0.9432665,
+          "source_index": 22
+        },
+        {
+          "text": "62\u00a2 per gallon",
+          "left": 969.0,
+          "top": 1348.0,
+          "right": 1252.0,
+          "bottom": 1397.0,
+          "confidence": 0.9435466533333333,
+          "source_index": 23
+        },
+        {
+          "text": "Ground Coffee",
+          "left": 227.0,
+          "top": 1437.0,
+          "right": 550.0,
+          "bottom": 1474.0,
+          "confidence": 0.9656454499999999,
+          "source_index": 24
+        },
+        {
+          "text": "50\u00a2 per pound",
+          "left": 968.0,
+          "top": 1437.0,
+          "right": 1257.0,
+          "bottom": 1485.0,
+          "confidence": 0.9531027733333333,
+          "source_index": 25
+        },
+        {
+          "text": "Bacon",
+          "left": 227.0,
+          "top": 1527.0,
+          "right": 352.0,
+          "bottom": 1561.0,
+          "confidence": 0.96700935,
+          "source_index": 26
+        },
+        {
+          "text": "45\u00a2 per pound",
+          "left": 967.0,
+          "top": 1525.0,
+          "right": 1257.0,
+          "bottom": 1573.0,
+          "confidence": 0.9509490166666666,
+          "source_index": 27
+        },
+        {
+          "text": "Eggs",
+          "left": 228.0,
+          "top": 1612.0,
+          "right": 324.0,
+          "bottom": 1658.0,
+          "confidence": 0.9640417499999999,
+          "source_index": 28
+        },
+        {
+          "text": "22\u00a2 per dozen",
+          "left": 967.0,
+          "top": 1611.0,
+          "right": 1247.0,
+          "bottom": 1660.0,
+          "confidence": 0.9536177833333334,
+          "source_index": 29
+        },
+        {
+          "text": "Fresh Ground Hamburger",
+          "left": 228.0,
+          "top": 1698.0,
+          "right": 785.0,
+          "bottom": 1746.0,
+          "confidence": 0.9638707733333334,
+          "source_index": 30
+        },
+        {
+          "text": "35\u00a2 per pound",
+          "left": 966.0,
+          "top": 1698.0,
+          "right": 1255.0,
+          "bottom": 1746.0,
+          "confidence": 0.9528479499999999,
+          "source_index": 31
+        },
+        {
+          "text": "Fresh Baked Bread",
+          "left": 228.0,
+          "top": 1782.0,
+          "right": 625.0,
+          "bottom": 1818.0,
+          "confidence": 0.9638367200000001,
+          "source_index": 32
+        },
+        {
+          "text": "9\u00a2 per loaf",
+          "left": 966.0,
+          "top": 1783.0,
+          "right": 1176.0,
+          "bottom": 1831.0,
+          "confidence": 0.94681465,
+          "source_index": 33
+        },
+        {
+          "text": "Remember When",
+          "left": 667.0,
+          "top": 1911.0,
+          "right": 906.0,
+          "bottom": 1933.0,
+          "confidence": 0.963163375,
+          "source_index": 34
+        },
+        {
+          "text": "1945",
+          "left": 1282.0,
+          "top": 1909.0,
+          "right": 1353.0,
+          "bottom": 1931.0,
+          "confidence": 0.96465927,
+          "source_index": 35
+        },
+        {
+          "text": "SeekPublishing",
+          "left": 208.0,
+          "top": 1909.0,
+          "right": 419.0,
+          "bottom": 1939.0,
+          "confidence": 0.9155497,
+          "source_index": 36
+        }
+      ],
+      "page": 7
+    },
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "1945 BIRTH NOTICES a BY Bette Midler Sir Van Morrison Goldie Hawn December 1 August 31 November 21 Bette Davis Midler was born Belfast-born George Ivan Goldie Jeanne Hawn was in Honolulu, HI. She studied Morrison received his first born in Washington DC. She guitar when he was 12. The drama at the University of first found fame on Rowan Hawaii. In 1972, she recorded |Grammy winner\u2019s tunes include and Martin\u2019s Laugh-In. \u201cMoondance\u201d and \u201cBrownher platinum debut, \u201cThe Hawn won an Oscar for her Eyed Girl\u201d and \u201cInto the Divine Miss M.\u201d Midler is first major movie, Cactus also a successful actress. Mystic.\u201d The Rock and Roll Flower. After the 60s she both Some of her movies include Hall of Fame inducted him in starred in and/or produced The Rose, Boys on the Side, 1993. He was knighted in 2016 numerous hits including and Down and Out for his contributions to music, Shampoo, The First Wives in Beverly Hills. tourism in North Ireland. Club and Private Benjamin. January 29 Tom Selleck (Actor) February 9 Mia Farrow (Entertainer) March 30 Eric Clapton (Guitarist/Singer) June 20 Anne Murray (Singer) October 30 Henry Winkler (Actor) SeekPublishing Remember When 1945",
+      "reading_order": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        20,
+        19,
+        18,
+        21,
+        22,
+        24,
+        23,
+        25,
+        27,
+        26,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "1945 BIRTH NOTICES",
+          "left": 260.0,
+          "top": 81.0,
+          "right": 1231.0,
+          "bottom": 165.0,
+          "confidence": 0.96178571,
+          "source_index": 0
+        },
+        {
+          "text": "a",
+          "left": 315.0,
+          "top": 312.0,
+          "right": 349.0,
+          "bottom": 329.0,
+          "confidence": 0.35312927,
+          "source_index": 1
+        },
+        {
+          "text": ">",
+          "left": 309.0,
+          "top": 327.0,
+          "right": 384.0,
+          "bottom": 452.0,
+          "confidence": 0.6884200300000001,
+          "source_index": 2
+        },
+        {
+          "text": "BY",
+          "left": 666.0,
+          "top": 521.0,
+          "right": 692.0,
+          "bottom": 553.0,
+          "confidence": 0.30156799,
+          "source_index": 4
+        },
+        {
+          "text": "Bette Midler",
+          "left": 240.0,
+          "top": 551.0,
+          "right": 419.0,
+          "bottom": 615.0,
+          "confidence": 0.956075325,
+          "source_index": 6
+        },
+        {
+          "text": "Sir Van Morrison",
+          "left": 621.0,
+          "top": 559.0,
+          "right": 868.0,
+          "bottom": 615.0,
+          "confidence": 0.9470742799999999,
+          "source_index": 7
+        },
+        {
+          "text": "Goldie Hawn",
+          "left": 1076.0,
+          "top": 581.0,
+          "right": 1268.0,
+          "bottom": 606.0,
+          "confidence": 0.963557775,
+          "source_index": 8
+        },
+        {
+          "text": "December 1",
+          "left": 247.0,
+          "top": 621.0,
+          "right": 407.0,
+          "bottom": 644.0,
+          "confidence": 0.968106385,
+          "source_index": 9
+        },
+        {
+          "text": "November 21",
+          "left": 1078.0,
+          "top": 621.0,
+          "right": 1264.0,
+          "bottom": 645.0,
+          "confidence": 0.96553814,
+          "source_index": 10
+        },
+        {
+          "text": "August 31",
+          "left": 675.0,
+          "top": 621.0,
+          "right": 810.0,
+          "bottom": 651.0,
+          "confidence": 0.9651479350000001,
+          "source_index": 11
+        },
+        {
+          "text": "Bette Davis Midler was born",
+          "left": 150.0,
+          "top": 659.0,
+          "right": 507.0,
+          "bottom": 683.0,
+          "confidence": 0.965125046,
+          "source_index": 12
+        },
+        {
+          "text": "Belfast-born George Ivan",
+          "left": 583.0,
+          "top": 659.0,
+          "right": 904.0,
+          "bottom": 688.0,
+          "confidence": 0.9515785466666666,
+          "source_index": 13
+        },
+        {
+          "text": "Goldie Jeanne Hawn was",
+          "left": 1011.0,
+          "top": 660.0,
+          "right": 1333.0,
+          "bottom": 684.0,
+          "confidence": 0.96493496,
+          "source_index": 14
+        },
+        {
+          "text": "in Honolulu, HI. She studied",
+          "left": 152.0,
+          "top": 697.0,
+          "right": 506.0,
+          "bottom": 724.0,
+          "confidence": 0.9636412679999999,
+          "source_index": 15
+        },
+        {
+          "text": "Morrison received his first",
+          "left": 575.0,
+          "top": 697.0,
+          "right": 908.0,
+          "bottom": 720.0,
+          "confidence": 0.966130735,
+          "source_index": 16
+        },
+        {
+          "text": "born in Washington DC. She",
+          "left": 988.0,
+          "top": 698.0,
+          "right": 1355.0,
+          "bottom": 728.0,
+          "confidence": 0.96251413,
+          "source_index": 17
+        },
+        {
+          "text": "first found fame on Rowan",
+          "left": 1001.0,
+          "top": 736.0,
+          "right": 1341.0,
+          "bottom": 759.0,
+          "confidence": 0.964305282,
+          "source_index": 18
+        },
+        {
+          "text": "drama at the University of",
+          "left": 166.0,
+          "top": 734.0,
+          "right": 494.0,
+          "bottom": 763.0,
+          "confidence": 0.968433806,
+          "source_index": 19
+        },
+        {
+          "text": "guitar when he was 12. The",
+          "left": 565.0,
+          "top": 733.0,
+          "right": 915.0,
+          "bottom": 763.0,
+          "confidence": 0.9664066966666667,
+          "source_index": 20
+        },
+        {
+          "text": "Hawaii. In 1972, she recorded |Grammy winner\u2019s tunes include",
+          "left": 145.0,
+          "top": 771.0,
+          "right": 938.0,
+          "bottom": 800.0,
+          "confidence": 0.9500812955555555,
+          "source_index": 21
+        },
+        {
+          "text": "and Martin\u2019s Laugh-In.",
+          "left": 1022.0,
+          "top": 773.0,
+          "right": 1318.0,
+          "bottom": 802.0,
+          "confidence": 0.9175013999999999,
+          "source_index": 22
+        },
+        {
+          "text": "her platinum debut, \u201cThe",
+          "left": 171.0,
+          "top": 809.0,
+          "right": 485.0,
+          "bottom": 839.0,
+          "confidence": 0.9673733525,
+          "source_index": 23
+        },
+        {
+          "text": "\u201cMoondance\u201d and \u201cBrown-",
+          "left": 568.0,
+          "top": 808.0,
+          "right": 912.0,
+          "bottom": 831.0,
+          "confidence": 0.8431149533333334,
+          "source_index": 24
+        },
+        {
+          "text": "Hawn won an Oscar for her",
+          "left": 992.0,
+          "top": 809.0,
+          "right": 1350.0,
+          "bottom": 833.0,
+          "confidence": 0.964914995,
+          "source_index": 25
+        },
+        {
+          "text": "Divine Miss M.\u201d Midler is",
+          "left": 162.0,
+          "top": 846.0,
+          "right": 495.0,
+          "bottom": 869.0,
+          "confidence": 0.9502218020000001,
+          "source_index": 26
+        },
+        {
+          "text": "Eyed Girl\u201d and \u201cInto the",
+          "left": 580.0,
+          "top": 845.0,
+          "right": 901.0,
+          "bottom": 874.0,
+          "confidence": 0.9598562919999999,
+          "source_index": 27
+        },
+        {
+          "text": "first major movie, Cactus",
+          "left": 1006.0,
+          "top": 846.0,
+          "right": 1335.0,
+          "bottom": 876.0,
+          "confidence": 0.966766205,
+          "source_index": 28
+        },
+        {
+          "text": "also a successful actress.",
+          "left": 172.0,
+          "top": 883.0,
+          "right": 482.0,
+          "bottom": 907.0,
+          "confidence": 0.965722905,
+          "source_index": 29
+        },
+        {
+          "text": "Mystic.\u201d The Rock and Roll",
+          "left": 563.0,
+          "top": 883.0,
+          "right": 916.0,
+          "bottom": 913.0,
+          "confidence": 0.966208604,
+          "source_index": 30
+        },
+        {
+          "text": "Flower. After the 60s she both",
+          "left": 975.0,
+          "top": 884.0,
+          "right": 1366.0,
+          "bottom": 908.0,
+          "confidence": 0.9679729083333334,
+          "source_index": 31
+        },
+        {
+          "text": "Some of her movies include",
+          "left": 151.0,
+          "top": 921.0,
+          "right": 505.0,
+          "bottom": 945.0,
+          "confidence": 0.9668403019999999,
+          "source_index": 32
+        },
+        {
+          "text": "Hall of Fame inducted him in",
+          "left": 554.0,
+          "top": 921.0,
+          "right": 926.0,
+          "bottom": 945.0,
+          "confidence": 0.9661783716666666,
+          "source_index": 33
+        },
+        {
+          "text": "starred in and/or produced",
+          "left": 1001.0,
+          "top": 922.0,
+          "right": 1340.0,
+          "bottom": 952.0,
+          "confidence": 0.9655002025,
+          "source_index": 34
+        },
+        {
+          "text": "The Rose, Boys on the Side,",
+          "left": 154.0,
+          "top": 960.0,
+          "right": 500.0,
+          "bottom": 990.0,
+          "confidence": 0.966401355,
+          "source_index": 35
+        },
+        {
+          "text": "1993. He was knighted in 2016",
+          "left": 546.0,
+          "top": 960.0,
+          "right": 937.0,
+          "bottom": 990.0,
+          "confidence": 0.9673262566666666,
+          "source_index": 36
+        },
+        {
+          "text": "numerous hits including",
+          "left": 1014.0,
+          "top": 960.0,
+          "right": 1325.0,
+          "bottom": 990.0,
+          "confidence": 0.9667099,
+          "source_index": 37
+        },
+        {
+          "text": "and Down and Out",
+          "left": 209.0,
+          "top": 999.0,
+          "right": 446.0,
+          "bottom": 1023.0,
+          "confidence": 0.9642173975,
+          "source_index": 38
+        },
+        {
+          "text": "for his contributions to music,",
+          "left": 551.0,
+          "top": 999.0,
+          "right": 931.0,
+          "bottom": 1027.0,
+          "confidence": 0.968388564,
+          "source_index": 39
+        },
+        {
+          "text": "Shampoo, The First Wives",
+          "left": 1000.0,
+          "top": 999.0,
+          "right": 1340.0,
+          "bottom": 1030.0,
+          "confidence": 0.9673935675,
+          "source_index": 40
+        },
+        {
+          "text": "in Beverly Hills.",
+          "left": 227.0,
+          "top": 1038.0,
+          "right": 429.0,
+          "bottom": 1068.0,
+          "confidence": 0.9687786099999999,
+          "source_index": 41
+        },
+        {
+          "text": "tourism in North Ireland.",
+          "left": 583.0,
+          "top": 1038.0,
+          "right": 899.0,
+          "bottom": 1062.0,
+          "confidence": 0.9666086375,
+          "source_index": 42
+        },
+        {
+          "text": "Club and Private Benjamin.",
+          "left": 993.0,
+          "top": 1038.0,
+          "right": 1345.0,
+          "bottom": 1068.0,
+          "confidence": 0.96512394,
+          "source_index": 43
+        },
+        {
+          "text": "January 29",
+          "left": 619.0,
+          "top": 1120.0,
+          "right": 852.0,
+          "bottom": 1168.0,
+          "confidence": 0.96656254,
+          "source_index": 44
+        },
+        {
+          "text": "Tom Selleck (Actor)",
+          "left": 503.0,
+          "top": 1168.0,
+          "right": 988.0,
+          "bottom": 1225.0,
+          "confidence": 0.9606587266666667,
+          "source_index": 45
+        },
+        {
+          "text": "February 9",
+          "left": 626.0,
+          "top": 1282.0,
+          "right": 863.0,
+          "bottom": 1321.0,
+          "confidence": 0.96212158,
+          "source_index": 46
+        },
+        {
+          "text": "Mia Farrow (Entertainer)",
+          "left": 454.0,
+          "top": 1335.0,
+          "right": 1042.0,
+          "bottom": 1390.0,
+          "confidence": 0.9642782099999999,
+          "source_index": 47
+        },
+        {
+          "text": "March 30",
+          "left": 651.0,
+          "top": 1447.0,
+          "right": 842.0,
+          "bottom": 1484.0,
+          "confidence": 0.957539785,
+          "source_index": 48
+        },
+        {
+          "text": "Eric Clapton (Guitarist/Singer)",
+          "left": 390.0,
+          "top": 1498.0,
+          "right": 1110.0,
+          "bottom": 1554.0,
+          "confidence": 0.94188123,
+          "source_index": 49
+        },
+        {
+          "text": "June 20",
+          "left": 669.0,
+          "top": 1611.0,
+          "right": 821.0,
+          "bottom": 1655.0,
+          "confidence": 0.9603446600000001,
+          "source_index": 50
+        },
+        {
+          "text": "Anne Murray (Singer)",
+          "left": 496.0,
+          "top": 1659.0,
+          "right": 1004.0,
+          "bottom": 1712.0,
+          "confidence": 0.9440761566666667,
+          "source_index": 51
+        },
+        {
+          "text": "October 30",
+          "left": 635.0,
+          "top": 1750.0,
+          "right": 853.0,
+          "bottom": 1786.0,
+          "confidence": 0.9675429950000001,
+          "source_index": 52
+        },
+        {
+          "text": "Henry Winkler (Actor)",
+          "left": 488.0,
+          "top": 1797.0,
+          "right": 1008.0,
+          "bottom": 1851.0,
+          "confidence": 0.9609832766666666,
+          "source_index": 53
+        },
+        {
+          "text": "SeekPublishing",
+          "left": 138.0,
+          "top": 1901.0,
+          "right": 324.0,
+          "bottom": 1931.0,
+          "confidence": 0.9299342300000001,
+          "source_index": 54
+        },
+        {
+          "text": "Remember When",
+          "left": 620.0,
+          "top": 1901.0,
+          "right": 890.0,
+          "bottom": 1928.0,
+          "confidence": 0.96618412,
+          "source_index": 55
+        },
+        {
+          "text": "1945",
+          "left": 1318.0,
+          "top": 1901.0,
+          "right": 1382.0,
+          "bottom": 1926.0,
+          "confidence": 0.96483139,
+          "source_index": 56
+        }
+      ],
+      "page": 8
+    },
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "World Series Champion Detroit Tigers U.S. Open Golf Winner The U.S. Open was not held in 1945. Pro Football Champion Cleveland Rams Indianapolis 500 Winner The Indianapolis 500 was not held in 1945. Stanley Cup Winner Toronto Maple Leafs NCAA Basketball Champion Oklahoma A&M College Football Champion rmy Heisman Trophy Winner Felix Blanchard from Army Canadian Grey Cup Champion Toronto Argonauts REMEMBER WHEN... PETE GRAY, A ONE-ARMED OUTFIELDER PRESSED INTO ACTION BECAUSE OF THE WORLD WAR IT MANPOWER SHORTAGE, PLAYS 77 GAMES AND BATS.218 FOR THE ST. LOUIS BROWNS IN HIS 1ST AND ONLY YEAR IN THE MAJOR LEAGUES. SeekPublishing 1945 Remember When",
+      "reading_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        22,
+        21,
+        23,
+        24,
+        26,
+        25
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "World Series Champion",
+          "left": 453.0,
+          "top": 251.0,
+          "right": 1120.0,
+          "bottom": 309.0,
+          "confidence": 0.9578505466666666,
+          "source_index": 0
+        },
+        {
+          "text": "Detroit Tigers",
+          "left": 625.0,
+          "top": 314.0,
+          "right": 956.0,
+          "bottom": 364.0,
+          "confidence": 0.964340975,
+          "source_index": 1
+        },
+        {
+          "text": "U.S. Open Golf Winner",
+          "left": 462.0,
+          "top": 407.0,
+          "right": 1116.0,
+          "bottom": 467.0,
+          "confidence": 0.960993445,
+          "source_index": 2
+        },
+        {
+          "text": "The U.S. Open was not held in 1945.",
+          "left": 367.0,
+          "top": 472.0,
+          "right": 1203.0,
+          "bottom": 523.0,
+          "confidence": 0.9624530862499999,
+          "source_index": 3
+        },
+        {
+          "text": "Pro Football Champion",
+          "left": 466.0,
+          "top": 566.0,
+          "right": 1111.0,
+          "bottom": 625.0,
+          "confidence": 0.9642228700000001,
+          "source_index": 4
+        },
+        {
+          "text": "Cleveland Rams",
+          "left": 601.0,
+          "top": 629.0,
+          "right": 981.0,
+          "bottom": 667.0,
+          "confidence": 0.96059425,
+          "source_index": 5
+        },
+        {
+          "text": "Indianapolis 500 Winner",
+          "left": 449.0,
+          "top": 723.0,
+          "right": 1129.0,
+          "bottom": 782.0,
+          "confidence": 0.9662187466666666,
+          "source_index": 6
+        },
+        {
+          "text": "The Indianapolis 500 was not held in 1945.",
+          "left": 298.0,
+          "top": 786.0,
+          "right": 1274.0,
+          "bottom": 837.0,
+          "confidence": 0.96292306875,
+          "source_index": 7
+        },
+        {
+          "text": "Stanley Cup Winner",
+          "left": 510.0,
+          "top": 879.0,
+          "right": 1070.0,
+          "bottom": 938.0,
+          "confidence": 0.9629601533333334,
+          "source_index": 8
+        },
+        {
+          "text": "Toronto Maple Leafs",
+          "left": 545.0,
+          "top": 941.0,
+          "right": 1031.0,
+          "bottom": 992.0,
+          "confidence": 0.9628208666666667,
+          "source_index": 9
+        },
+        {
+          "text": "NCAA Basketball Champion",
+          "left": 391.0,
+          "top": 1029.0,
+          "right": 1180.0,
+          "bottom": 1073.0,
+          "confidence": 0.9637341566666667,
+          "source_index": 10
+        },
+        {
+          "text": "Oklahoma A&M",
+          "left": 593.0,
+          "top": 1088.0,
+          "right": 987.0,
+          "bottom": 1125.0,
+          "confidence": 0.927448845,
+          "source_index": 11
+        },
+        {
+          "text": "College Football Champion",
+          "left": 417.0,
+          "top": 1174.0,
+          "right": 1157.0,
+          "bottom": 1232.0,
+          "confidence": 0.9639484899999999,
+          "source_index": 12
+        },
+        {
+          "text": "rmy",
+          "left": 762.0,
+          "top": 1244.0,
+          "right": 853.0,
+          "bottom": 1282.0,
+          "confidence": 0.92371956,
+          "source_index": 13
+        },
+        {
+          "text": "Heisman Trophy Winner",
+          "left": 452.0,
+          "top": 1319.0,
+          "right": 1124.0,
+          "bottom": 1377.0,
+          "confidence": 0.9623235333333332,
+          "source_index": 14
+        },
+        {
+          "text": "Felix Blanchard from Army",
+          "left": 472.0,
+          "top": 1378.0,
+          "right": 1100.0,
+          "bottom": 1429.0,
+          "confidence": 0.9662718575,
+          "source_index": 15
+        },
+        {
+          "text": "Canadian Grey Cup Champion",
+          "left": 373.0,
+          "top": 1469.0,
+          "right": 1199.0,
+          "bottom": 1529.0,
+          "confidence": 0.9636729424999999,
+          "source_index": 16
+        },
+        {
+          "text": "Toronto Argonauts",
+          "left": 568.0,
+          "top": 1532.0,
+          "right": 1006.0,
+          "bottom": 1581.0,
+          "confidence": 0.95920586,
+          "source_index": 17
+        },
+        {
+          "text": "REMEMBER WHEN...",
+          "left": 548.0,
+          "top": 1662.0,
+          "right": 1021.0,
+          "bottom": 1705.0,
+          "confidence": 0.9405271150000001,
+          "source_index": 19
+        },
+        {
+          "text": "PETE GRAY, A ONE-ARMED OUTFIELDER PRESSED INTO ACTION",
+          "left": 240.0,
+          "top": 1715.0,
+          "right": 1311.0,
+          "bottom": 1751.0,
+          "confidence": 0.9538461125,
+          "source_index": 20
+        },
+        {
+          "text": "77 GAMES AND BATS .218 FOR THE ST. LOUIS BROWNS IN HIS 1ST",
+          "left": 215.0,
+          "top": 1809.0,
+          "right": 1335.0,
+          "bottom": 1840.0,
+          "confidence": 0.9533125592307693,
+          "source_index": 21
+        },
+        {
+          "text": "BECAUSE OF THE WORLD WAR IT MANPOWER SHORTAGE, PLAYS",
+          "left": 231.0,
+          "top": 1763.0,
+          "right": 1331.0,
+          "bottom": 1798.0,
+          "confidence": 0.9507927966666667,
+          "source_index": 22
+        },
+        {
+          "text": "AND ONLY YEAR IN THE MAJOR LEAGUES.",
+          "left": 426.0,
+          "top": 1863.0,
+          "right": 1132.0,
+          "bottom": 1892.0,
+          "confidence": 0.96166592,
+          "source_index": 23
+        },
+        {
+          "text": "SeekPublishing",
+          "left": 168.0,
+          "top": 1924.0,
+          "right": 400.0,
+          "bottom": 1955.0,
+          "confidence": 0.92622688,
+          "source_index": 24
+        },
+        {
+          "text": "Remember When",
+          "left": 649.0,
+          "top": 1925.0,
+          "right": 915.0,
+          "bottom": 1949.0,
+          "confidence": 0.9649929399999999,
+          "source_index": 25
+        },
+        {
+          "text": "1945",
+          "left": 1310.0,
+          "top": 1924.0,
+          "right": 1376.0,
+          "bottom": 1948.0,
+          "confidence": 0.96892799,
+          "source_index": 26
+        }
+      ],
+      "page": 9
+    },
+    {
+      "mode": "standard",
+      "confidence": 0.9,
+      "text": "1945 Music & MOVIE FAVORITES MusIc Rum and Coca-Cola - by The Andrews Sisters Sentimental Journey - by Les Brown There, I\u2019ve Said It Again - by Vaughn Monroe Till the End Of Time - by Perry Como White Christmas - by Bing Crosby It\u2019s Been A Long, Long Time - by Harry James Ac-Cent--Tachu-Ate the Positive - by Johnny Mercer Candy - by Johnny Mercer & Jo Stafford Chickery Chick - by Sammy Kaye Dream - by Frank Sinatra MOVIES \u00a2 The Lost Weekend Academy Award Winner \u00a2 Spellbound e And Then There Were None \u00a2 A Tree Grows in Brooklyn * The Bells of St. Mary\u2019s \u00a2 Detour | SeekPublishing 1945 Remember When",
+      "reading_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        24,
+        23
+      ],
+      "warnings": [],
+      "details": {
+        "columns": 1
+      },
+      "regions": [
+        {
+          "text": "1945 Music & MOVIE",
+          "left": 382.0,
+          "top": 98.0,
+          "right": 1121.0,
+          "bottom": 156.0,
+          "confidence": 0.9319597825,
+          "source_index": 0
+        },
+        {
+          "text": "FAVORITES",
+          "left": 585.0,
+          "top": 160.0,
+          "right": 934.0,
+          "bottom": 215.0,
+          "confidence": 0.96342964,
+          "source_index": 1
+        },
+        {
+          "text": "MusIc",
+          "left": 682.0,
+          "top": 289.0,
+          "right": 884.0,
+          "bottom": 342.0,
+          "confidence": 0.8936798899999999,
+          "source_index": 2
+        },
+        {
+          "text": "Rum and Coca-Cola - by The Andrews Sisters",
+          "left": 308.0,
+          "top": 385.0,
+          "right": 1088.0,
+          "bottom": 426.0,
+          "confidence": 0.9282944475,
+          "source_index": 3
+        },
+        {
+          "text": "Sentimental Journey - by Les Brown",
+          "left": 309.0,
+          "top": 460.0,
+          "right": 946.0,
+          "bottom": 502.0,
+          "confidence": 0.9542202,
+          "source_index": 4
+        },
+        {
+          "text": "There, I\u2019ve Said It Again - by Vaughn Monroe",
+          "left": 307.0,
+          "top": 534.0,
+          "right": 1108.0,
+          "bottom": 576.0,
+          "confidence": 0.9541824066666665,
+          "source_index": 5
+        },
+        {
+          "text": "Till the End Of Time - by Perry Como",
+          "left": 307.0,
+          "top": 608.0,
+          "right": 973.0,
+          "bottom": 649.0,
+          "confidence": 0.9571945955555555,
+          "source_index": 6
+        },
+        {
+          "text": "White Christmas - by Bing Crosby",
+          "left": 307.0,
+          "top": 683.0,
+          "right": 906.0,
+          "bottom": 723.0,
+          "confidence": 0.9528391133333334,
+          "source_index": 7
+        },
+        {
+          "text": "It\u2019s Been A Long, Long Time - by Harry James",
+          "left": 308.0,
+          "top": 757.0,
+          "right": 1120.0,
+          "bottom": 799.0,
+          "confidence": 0.9579094930000001,
+          "source_index": 8
+        },
+        {
+          "text": "Ac-Cent--Tachu-Ate the Positive - by Johnny Mercer",
+          "left": 309.0,
+          "top": 832.0,
+          "right": 1222.0,
+          "bottom": 872.0,
+          "confidence": 0.9497989985714286,
+          "source_index": 9
+        },
+        {
+          "text": "Candy - by Johnny Mercer & Jo Stafford",
+          "left": 309.0,
+          "top": 906.0,
+          "right": 966.0,
+          "bottom": 948.0,
+          "confidence": 0.93979705875,
+          "source_index": 10
+        },
+        {
+          "text": "Chickery Chick - by Sammy Kaye",
+          "left": 309.0,
+          "top": 979.0,
+          "right": 896.0,
+          "bottom": 1020.0,
+          "confidence": 0.9438982400000001,
+          "source_index": 11
+        },
+        {
+          "text": "Dream - by Frank Sinatra",
+          "left": 310.0,
+          "top": 1051.0,
+          "right": 740.0,
+          "bottom": 1097.0,
+          "confidence": 0.9517639900000001,
+          "source_index": 12
+        },
+        {
+          "text": "MOVIES",
+          "left": 654.0,
+          "top": 1274.0,
+          "right": 889.0,
+          "bottom": 1340.0,
+          "confidence": 0.9644136,
+          "source_index": 14
+        },
+        {
+          "text": "\u00a2 The Lost Weekend",
+          "left": 282.0,
+          "top": 1355.0,
+          "right": 737.0,
+          "bottom": 1396.0,
+          "confidence": 0.8502250275000001,
+          "source_index": 15
+        },
+        {
+          "text": "Academy Award Winner",
+          "left": 321.0,
+          "top": 1404.0,
+          "right": 717.0,
+          "bottom": 1440.0,
+          "confidence": 0.9649881233333334,
+          "source_index": 16
+        },
+        {
+          "text": "\u00a2 Spellbound",
+          "left": 282.0,
+          "top": 1477.0,
+          "right": 581.0,
+          "bottom": 1526.0,
+          "confidence": 0.823625185,
+          "source_index": 17
+        },
+        {
+          "text": "e And Then There Were None",
+          "left": 282.0,
+          "top": 1555.0,
+          "right": 943.0,
+          "bottom": 1598.0,
+          "confidence": 0.8403167483333333,
+          "source_index": 18
+        },
+        {
+          "text": "\u00a2 A Tree Grows in Brooklyn",
+          "left": 282.0,
+          "top": 1639.0,
+          "right": 904.0,
+          "bottom": 1689.0,
+          "confidence": 0.9028471750000001,
+          "source_index": 19
+        },
+        {
+          "text": "* The Bells of St. Mary\u2019s",
+          "left": 282.0,
+          "top": 1726.0,
+          "right": 820.0,
+          "bottom": 1776.0,
+          "confidence": 0.8233992783333334,
+          "source_index": 20
+        },
+        {
+          "text": "\u00a2 Detour",
+          "left": 282.0,
+          "top": 1819.0,
+          "right": 473.0,
+          "bottom": 1855.0,
+          "confidence": 0.83652939,
+          "source_index": 21
+        },
+        {
+          "text": "| SeekPublishing",
+          "left": 112.0,
+          "top": 1909.0,
+          "right": 333.0,
+          "bottom": 1966.0,
+          "confidence": 0.82186531,
+          "source_index": 22
+        },
+        {
+          "text": "Remember When",
+          "left": 640.0,
+          "top": 1925.0,
+          "right": 876.0,
+          "bottom": 1947.0,
+          "confidence": 0.96471527,
+          "source_index": 23
+        },
+        {
+          "text": "1945",
+          "left": 1285.0,
+          "top": 1922.0,
+          "right": 1349.0,
+          "bottom": 1945.0,
+          "confidence": 0.9546991,
+          "source_index": 24
+        }
+      ],
+      "page": 10
+    }
+  ]
+}

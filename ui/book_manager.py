@@ -73,3 +73,9 @@ class BookManager:
         self.window.central.settings.clear_book()
         self.window.footer.set_left("No active book")
         self.window.set_status("Ready")
+
+    def removed(self, filename):
+        path = Path(filename).expanduser().resolve()
+        self.window.config.remove_recent_book(path)
+        self.window.log(f"Removed from Library and startup history: {path.name}")
+        self.window.status_bar.set_message(f"Removed from Library: {path.name}")

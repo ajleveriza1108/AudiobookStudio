@@ -28,7 +28,13 @@ def test_app_paths_declares_every_paths_attribute_used_by_source():
     }
     referenced: set[str] = set()
     for source in project.rglob("*.py"):
-        if any(part in {".venv", "__pycache__"} for part in source.parts):
+        relative = source.relative_to(project)
+        excluded = {".venv", ".gpu-venv", ".advanced-ocr-venv", "__pycache__", ".git"}
+        if any(part in excluded for part in relative.parts):
+            continue
+        if relative.parts and relative.parts[0].startswith("_backup_"):
+            continue
+        if "site-packages" in relative.parts:
             continue
         text = source.read_text(encoding="utf-8", errors="ignore")
         referenced.update(re.findall(r"PATHS\.([A-Za-z_][A-Za-z0-9_]*)", text))

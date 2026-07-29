@@ -6,6 +6,7 @@ from PySide6.QtWidgets import QMessageBox
 
 from core.ffmpeg import FFmpeg
 from core.ocr import OCRService
+from core.ocr_corrections import content_sha256
 from engines.manager import EngineManager
 
 
@@ -152,10 +153,14 @@ class GenerationController:
         jobs = []
         for book in books:
             source = Path(book).resolve()
+            source_sha256 = content_sha256(source)
             is_current = bool(current_resolved and source == current_resolved)
+            self.window.log(f"Queued exact selected source: {source}")
+            self.window.log(f"Selected source SHA-256: {source_sha256}")
             jobs.append(
                 {
                     "source": str(source),
+                    "source_sha256": source_sha256,
                     "output": values["output"],
                     "voice": values["voice"],
                     "speed": values["speed"],

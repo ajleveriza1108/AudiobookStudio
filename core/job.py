@@ -14,11 +14,13 @@ class AudiobookJob:
         speed,
         pitch,
         engine,
+        source_sha256="",
         chapter_plan: list[dict[str, Any]] | None = None,
         pronunciation_rules: list[dict[str, Any]] | None = None,
         metadata_overrides: dict[str, Any] | None = None,
     ):
         self.source = Path(source)
+        self.source_sha256 = str(source_sha256 or "").casefold()
         self.output = Path(output)
         self.voice = voice
         self.speed = speed

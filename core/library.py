@@ -94,6 +94,17 @@ class Library:
         with self._lock:
             for book in self.books:
                 if book.get("checksum") == checksum:
+                    # The user-selected path is authoritative. If the same PDF
+                    # was copied or renamed, update the library entry instead of
+                    # keeping a stale path that can be restored at startup.
+                    changed = (
+                        os.path.normcase(str(book.get("path", "")))
+                        != os.path.normcase(str(path))
+                    )
+                    if changed:
+                        book["title"] = path.stem
+                        book["path"] = str(path)
+                        self.save()
                     return False
 
             self.books.append(
@@ -116,11 +127,12 @@ class Library:
 
     def remove(self, path: str | Path) -> None:
         target = str(Path(path).expanduser().resolve())
+        target_key = os.path.normcase(target)
         with self._lock:
             self.books = [
                 book
                 for book in self.books
-                if str(book.get("path", "")) != target
+                if os.path.normcase(str(book.get("path", ""))) != target_key
             ]
             self.save()
 

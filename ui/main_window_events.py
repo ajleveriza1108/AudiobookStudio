@@ -17,6 +17,7 @@ class MainWindowEvents:
         central.settings.engine_status_changed.connect(self.window.engine_status_changed)
 
         central.sidebar.book_selected.connect(self.window.controller.books.selected)
+        central.sidebar.book_removed.connect(self.window.controller.books.removed)
         central.sidebar.book_cleared.connect(self.window.controller.books.cleared)
 
         footer.pause.clicked.connect(generation.pause)

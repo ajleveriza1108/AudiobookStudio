@@ -19,6 +19,7 @@ from core.library import Library
 class Sidebar(QWidget):
     book_selected = Signal(str)
     book_cleared = Signal()
+    book_removed = Signal(str)
 
     def __init__(self):
         super().__init__()
@@ -141,6 +142,7 @@ class Sidebar(QWidget):
         self.library.remove(path)
         self.current_selected_path = None
         self.refresh()
+        self.book_removed.emit(path)
         self.book_cleared.emit()
 
     def favorite_selected(self):

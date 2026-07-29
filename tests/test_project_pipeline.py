@@ -43,7 +43,7 @@ class FakeLogger:
 def test_project_uses_chapter_plan_and_creates_reports(monkeypatch, tmp_path):
     source = tmp_path / "book.pdf"
     source.write_bytes(b"placeholder")
-    raw = "Chapter One\nFirst section.\n\nChapter Two\nSecond section."
+    raw = "Chapter One\nFirst complete section with enough narration words.\fChapter Two\nSecond complete section with enough narration words."
 
     monkeypatch.setattr("core.project.extract_book_text", lambda *_, **__: raw)
     monkeypatch.setattr(

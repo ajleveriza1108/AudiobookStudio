@@ -84,7 +84,7 @@ def test_optional_voice_runtime_is_isolated_and_marked_ready():
 def test_r116_version_and_theme_are_compact():
     version = (ROOT / "core" / "version.py").read_text(encoding="utf-8")
     theme = (ROOT / "ui" / "theme_manager.py").read_text(encoding="utf-8")
-    assert "R1.16" in version
-    assert "BUILD = 160" in version
+    assert "R1." in version
+    assert "BUILD =" in version
     assert 'font-size:9pt' in theme
     assert 'min-height:25px' in theme

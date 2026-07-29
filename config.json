@@ -27,5 +27,15 @@
   "panel_library_visible": true,
   "panel_settings_visible": true,
   "panel_activity_visible": true,
-  "focus_side_panel": "settings"
+  "focus_side_panel": "settings",
+  "processing_device": "auto",
+  "gpu_runtime_enabled": true,
+  "gpu_runtime_status": "not_installed",
+  "gpu_runtime_report": "",
+  "advanced_ocr_enabled": false,
+  "advanced_ocr_status": "not_checked",
+  "advanced_ocr_can_enable": false,
+  "advanced_ocr_last_checked_at": "",
+  "advanced_ocr_report": "",
+  "removed_books": []
 }

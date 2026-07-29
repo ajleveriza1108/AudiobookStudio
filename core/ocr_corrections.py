@@ -49,12 +49,12 @@ def find_correction_profile(
     *,
     page_count: int,
 ) -> OCRCorrectionProfile | None:
-    """Return a verified narration profile for a known scanned edition.
+    """Return an explicitly enabled profile for the exact selected file.
 
-    Exact SHA-256 matching is preferred. A conservative fallback requires the
-    exact byte size, page count, and all filename tokens declared by the
-    profile. This prevents a similarly named but different book from receiving
-    another edition's text.
+    Profiles are never automatic merely because a title, filename, byte size,
+    or page count looks familiar. A profile must contain ``"automatic": true``
+    and the complete selected file SHA-256 must match. This keeps the selected
+    PDF authoritative and prevents old narration text from replacing it.
     """
 
     source_path = Path(source).expanduser().resolve()
@@ -63,29 +63,22 @@ def find_correction_profile(
         return None
 
     try:
-        stat = source_path.stat()
         digest = content_sha256(source_path)
     except OSError:
         return None
 
-    filename = _normalized_filename(source_path)
     for profile_file in sorted(profile_root.glob("*.json")):
         data = _load_profile(profile_file)
         if not data or int(data.get("schema") or 0) != 1:
             continue
+        if data.get("automatic") is not True:
+            continue
+
         match = data.get("match") if isinstance(data.get("match"), dict) else {}
         hashes = {str(value).casefold() for value in (match.get("sha256") or [])}
-        exact_hash = digest.casefold() in hashes
-
-        fallback = (
-            int(match.get("size_bytes") or -1) == int(stat.st_size)
-            and int(match.get("page_count") or -1) == int(page_count)
-        )
-        tokens = [str(value).casefold().strip() for value in (match.get("filename_contains") or [])]
-        if tokens:
-            fallback = fallback and all(token in filename for token in tokens)
-
-        if not exact_hash and not fallback:
+        if digest.casefold() not in hashes:
+            continue
+        if int(match.get("page_count") or page_count) != int(page_count):
             continue
 
         raw_pages = data.get("pages") if isinstance(data.get("pages"), dict) else {}

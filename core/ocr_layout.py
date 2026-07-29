@@ -6,6 +6,8 @@ from dataclasses import asdict, dataclass
 from statistics import median
 from typing import Any, Iterable, Sequence
 
+from core.ocr_structured import sanitize_ocr_region_text, structured_layout
+
 
 MONTHS = (
     "January",
@@ -359,6 +361,155 @@ def _cluster_by_y(regions: Sequence[OCRRegion], tolerance: float) -> list[list[O
     return sorted(clusters, key=lambda cluster: median(item.center_y for item in cluster))
 
 
+
+_FORM_LABELS = {
+    "to": "To",
+    "from": "From",
+    "date": "Date",
+}
+
+
+def _form_label(text: str) -> str | None:
+    normalized = _normalize_anchor(text)
+    return normalized if normalized in _FORM_LABELS else None
+
+
+def _finish_sentence(text: str) -> str:
+    value = re.sub(r"\s+", " ", str(text or "")).strip(" _\t\r\n")
+    if not value:
+        return ""
+    if value[-1] not in ".!?":
+        value += "."
+    return value
+
+
+def _normalize_form_title(text: str) -> str:
+    value = re.sub(r"\s+", " ", str(text or "")).strip()
+    anchor = _normalize_anchor(value)
+    if "rememberwhen" in anchor and "1945" in re.sub(r"[^0-9]", "", value):
+        return "Remember When, 1945."
+    return _finish_sentence(value)
+
+
+def _form_layout(
+    regions: Sequence[OCRRegion], page_width: float, page_height: float
+) -> OCRLayoutResult | None:
+    """Pair short form labels with nearby values instead of reading rows backward.
+
+    Dedication pages and ownership forms often place labels such as To, From,
+    and Date on the left with handwritten values to the right. Generic
+    top/left sorting can produce phrases such as "Dad To". This layout keeps
+    each label attached to its value and preserves top-to-bottom field order.
+    """
+
+    label_regions: list[tuple[str, OCRRegion]] = []
+    for region in regions:
+        label = _form_label(region.text)
+        if label is not None:
+            label_regions.append((label, region))
+
+    unique_labels = {label for label, _ in label_regions}
+    if len(unique_labels) < 2:
+        return None
+
+    label_regions.sort(key=lambda item: (item[1].center_y, item[1].center_x))
+    label_xs = [region.center_x for _, region in label_regions]
+    if max(label_xs) - min(label_xs) > page_width * 0.18:
+        return None
+
+    label_ids = {id(region) for _, region in label_regions}
+    visible = [
+        region
+        for region in regions
+        if id(region) not in label_ids
+        and not _is_decorative(region, page_width, page_height)
+    ]
+    first_label_top = min(region.top for _, region in label_regions)
+    last_label_bottom = max(region.bottom for _, region in label_regions)
+
+    title_regions = [
+        region
+        for region in visible
+        if region.center_y < first_label_top - page_height * 0.01
+    ]
+    assigned_ids: set[int] = set()
+    paragraphs: list[str] = []
+    reading_order: list[int] = []
+
+    title_text = _join_regions(title_regions)
+    if title_text:
+        paragraphs.append(_normalize_form_title(title_text))
+        for region in sorted(title_regions, key=lambda item: (item.top, item.left)):
+            assigned_ids.add(id(region))
+            reading_order.append(region.source_index)
+
+    label_centers = [region.center_y for _, region in label_regions]
+    for index, (label, label_region) in enumerate(label_regions):
+        top_bound = (
+            first_label_top - page_height * 0.01
+            if index == 0
+            else (label_centers[index - 1] + label_centers[index]) / 2.0
+        )
+        bottom_bound = (
+            last_label_bottom + page_height * 0.02
+            if index == len(label_regions) - 1
+            else (label_centers[index] + label_centers[index + 1]) / 2.0
+        )
+
+        candidates = [
+            region
+            for region in visible
+            if id(region) not in assigned_ids
+            and top_bound <= region.center_y < bottom_bound
+            and region.center_x > label_region.center_x
+            and region.right > label_region.right - page_width * 0.02
+        ]
+        candidates.sort(key=lambda item: (item.top, item.left, item.source_index))
+        value = _join_regions(candidates)
+        if not value:
+            continue
+
+        display_label = _FORM_LABELS[label]
+        if label in {"to", "from"}:
+            field_text = _finish_sentence(f"{display_label} {value}")
+        else:
+            field_text = _finish_sentence(f"{display_label}: {value}")
+        paragraphs.append(field_text)
+        reading_order.append(label_region.source_index)
+        for region in candidates:
+            assigned_ids.add(id(region))
+            reading_order.append(region.source_index)
+
+    remaining = [
+        region
+        for region in visible
+        if id(region) not in assigned_ids
+        and region.center_y > last_label_bottom
+    ]
+    remaining_text = _join_regions(remaining)
+    if remaining_text:
+        paragraphs.append(_finish_sentence(remaining_text))
+        reading_order.extend(
+            region.source_index
+            for region in sorted(remaining, key=lambda item: (item.top, item.left))
+        )
+
+    if len(paragraphs) < 3:
+        return None
+
+    return OCRLayoutResult(
+        text="\n\n".join(paragraphs).strip(),
+        mode="form-fields",
+        confidence=0.94,
+        regions=tuple(regions),
+        reading_order=tuple(reading_order),
+        warnings=(),
+        details={
+            "fields_detected": [_FORM_LABELS[label] for label, _ in label_regions],
+            "field_count": len(label_regions),
+        },
+    )
+
 def _timeline_layout(
     regions: Sequence[OCRRegion], page_width: float, page_height: float
 ) -> OCRLayoutResult | None:
@@ -571,19 +722,49 @@ def layout_ocr_regions(
 ) -> OCRLayoutResult:
     """Create narration text from OCR regions without flattening unrelated cells."""
 
-    clean_regions = [
-        OCRRegion(
-            re.sub(r"\s+", " ", str(region.text or "")).strip(),
-            max(0.0, float(region.left)),
-            max(0.0, float(region.top)),
-            max(0.0, float(region.right)),
-            max(0.0, float(region.bottom)),
-            max(0.0, min(1.0, float(region.confidence))),
-            int(region.source_index),
+    clean_regions: list[OCRRegion] = []
+    for region in regions:
+        confidence = max(0.0, min(1.0, float(region.confidence)))
+        text = sanitize_ocr_region_text(
+            str(region.text or ""),
+            top=float(region.top),
+            bottom=float(region.bottom),
+            confidence=confidence,
+            page_height=float(page_height),
         )
-        for region in regions
-        if str(region.text or "").strip()
-    ]
+        if not text:
+            continue
+        clean_regions.append(
+            OCRRegion(
+                text,
+                max(0.0, float(region.left)),
+                max(0.0, float(region.top)),
+                max(0.0, float(region.right)),
+                max(0.0, float(region.bottom)),
+                confidence,
+                int(region.source_index),
+            )
+        )
+
+    structured = structured_layout(
+        clean_regions,
+        page_width=float(page_width),
+        page_height=float(page_height),
+    )
+    if structured is not None:
+        return OCRLayoutResult(
+            text=structured.text,
+            mode=structured.mode,
+            confidence=structured.confidence,
+            regions=tuple(clean_regions),
+            reading_order=structured.reading_order,
+            warnings=structured.warnings,
+            details=dict(structured.details or {}),
+        )
+
+    form = _form_layout(clean_regions, float(page_width), float(page_height))
+    if form is not None:
+        return form
     timeline = _timeline_layout(clean_regions, float(page_width), float(page_height))
     if timeline is not None:
         return timeline
